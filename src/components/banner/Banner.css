@@ -6,12 +6,22 @@
   align-items: center;
   background: transparent;
   z-index: 10;
-  height: 100px;
+  height: 0px;
+  background: linear-gradient(135deg, #0a0f24, #1a2a6c, #b21f1f, #fdbb2d);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .banner-content {
   position: relative;
-  top: -50px;
+  top: -50%;
   width: 70%;
   text-align: center;
   background: rgba(255, 255, 255, 0.1);

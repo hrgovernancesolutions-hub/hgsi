@@ -34,7 +34,7 @@
   background: rgba(0, 0, 0, 0.55);
   padding: 60px;
   text-align: left;
-  color: #fff;
+  color: #d3d3d3;
   animation: fadeIn 1.2s ease-in-out;
   width: 100%;
 }
@@ -49,9 +49,9 @@
   height: 100%;
   pointer-events: none;
   background: radial-gradient(
-    circle 100px at var(--x, 50%) var(--y, 50%),
-    rgba(255, 255, 255, 0.4),
-    transparent 100px
+    circle 200px at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.26),
+    transparent 300px
   );
   opacity: 0;
   transition: opacity 0.3s ease;

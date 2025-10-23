@@ -13,12 +13,9 @@ function Navbar() {
         <div className="navbar-logo">
             <h1>HGSI</h1>
         </div>
-        {/* Menu Icon for mobile */}
         <div className="menu-icon" onClick={() => setMenuOpen(true)}>
           <FaBars />
         </div>
-
-        {/* Desktop Links */}
         <div className="navbar-right">
           <ul>
             <li><a href="#home">Home</a></li>
@@ -26,8 +23,6 @@ function Navbar() {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-
-        {/* Mobile Side Popup */}
         <div className={`mobile-panel ${menuOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={() => setMenuOpen(false)}>
             <FaTimes />

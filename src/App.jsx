@@ -4,6 +4,7 @@ import Banner from './components/banner/Banner'
 import Content from './components/content/Content'
 import Hero from './components/hero/Hero'
 import Navbar from './components/navbar/Navbar'
+import Team from './components/team/Team'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Banner/>
       <About/>
       <Content/>
+      <Team/>
     </section>
   )
 }

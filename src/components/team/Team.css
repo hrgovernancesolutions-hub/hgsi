@@ -1,0 +1,140 @@
+.team {
+  background: linear-gradient(135deg, #0a0f24, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  padding: 60px;
+  text-align: left;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.team-heading {
+  margin-bottom: 40px;
+}
+
+.team-heading h2 {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.team-heading p {
+  color: #d3d3d3;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  justify-items: start;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.team-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-img img {
+  transform: scale(1.03);
+}
+
+.team-info {
+  padding: 14px 10px 20px;
+  text-align: left;
+}
+
+.team-info h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.team-info p {
+  font-size: 0.7rem;
+  color: #00e1ff;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.team-info span {
+  font-size: 0.6rem;
+  color: #d4d4d4;
+  margin-top: 0;
+}
+@media (max-width: 1024px) {
+  .team-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team {
+    padding: 50px 6%;
+  }
+
+  .team-heading h2 {
+    font-size: 1.8rem;
+  }
+
+  .team-heading p {
+    font-size: 0.9rem;
+  }
+
+  .team-card {
+    max-width: 180px;
+  }
+
+  .team-img img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .team-info h3 {
+    font-size: 0.85rem;
+  }
+
+  .team-info p {
+    font-size: 0.7rem;
+  }
+
+  .team-card {
+    max-width: 160px;
+  }
+
+  .team-img img {
+    height: 140px;
+  }
+}

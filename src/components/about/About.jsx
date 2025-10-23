@@ -25,7 +25,8 @@ function About() {
   }, []);
 
   return (
-    <section className="about" ref={aboutRef}>
+    <section className="about-section">
+      <section className="about" ref={aboutRef}>
       <div className="about-container">
         <div className="about-left">
           <h2>About Us</h2>
@@ -60,6 +61,7 @@ function About() {
           </div>
         </div>
       </div>
+    </section>
     </section>
   );
 }

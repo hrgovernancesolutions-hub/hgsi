@@ -1,10 +1,32 @@
-.about {
-  padding: 60px 10%;
-  opacity: 0;
-  transform: translateY(60px);
+.about-section{
+  background: linear-gradient(135deg, #0a0f24, #1a2a6c, #b21f1f, #fdbb2d);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.about {
+  padding: 8% 60px 60px 60px;
+  opacity: 0;
+  transform: translateY(60px);
+  background: linear-gradient(135deg, #0a0f24, #1a2a6c, #b21f1f, #fdbb2d);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .about.visible {
   opacity: 1;
   transform: translateY(0);
@@ -40,7 +62,7 @@
 }
 
 .about-left p {
-  color: #4b5563;
+  color: #d3d3d3;
 }
 
 .about-right {
@@ -153,7 +175,7 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 10%;
+    padding: 20% 10% 10% 10%;
   }
 
   .about-container {
