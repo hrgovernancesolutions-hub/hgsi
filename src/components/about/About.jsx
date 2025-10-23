@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./about.css";
+import "./About.css";
 import aboutImg from "../../assets/hero2.png";
 
 function About() {
