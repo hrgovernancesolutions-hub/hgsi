@@ -1,0 +1,129 @@
+.content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-vision,
+.content-whyus {
+  position: relative;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+}
+.content-vision h2,
+.content-whyus h2{
+  color: #00e1ff;
+}
+.content-vision {
+  background-image: url("../../assets/hero1.jpg");
+}
+
+.content-whyus {
+  background-image: url("../../assets/hero3.png");
+}
+
+.overlay-vision,
+.overlay-whyus {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 60px;
+  text-align: left;
+  color: #fff;
+  animation: fadeIn 1.2s ease-in-out;
+  width: 100%;
+}
+
+.content-vision::before,
+.content-whyus::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 100px at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.4),
+    transparent 100px
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.content-vision:hover::before,
+.content-whyus:hover::before {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .overlay-vision,
+  .overlay-whyus {
+    padding: 40px;
+  }
+
+  .content-vision::before,
+  .content-whyus::before {
+    background: radial-gradient(
+      circle 80px at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.35),
+      transparent 80px
+    );
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay-vision,
+  .overlay-whyus {
+    padding: 30px;
+    text-align: left;
+  }
+
+  .content-vision,
+  .content-whyus {
+    background-attachment: scroll;
+  }
+
+  .content-vision::before,
+  .content-whyus::before {
+    background: radial-gradient(
+      circle 60px at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.3),
+      transparent 60px
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-vision,
+  .overlay-whyus {
+    padding: 20px;
+    text-align: left;
+  }
+
+  .content-vision::before,
+  .content-whyus::before {
+    background: radial-gradient(
+      circle 40px at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.25),
+      transparent 40px
+    );
+  }
+}
