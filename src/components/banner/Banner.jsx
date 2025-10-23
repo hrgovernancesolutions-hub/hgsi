@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHandshake, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
-import './banner.css';
+import './Banner.css';
 
 function Banner() {
   return (
