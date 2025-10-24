@@ -1,0 +1,145 @@
+.hiring {
+  background: #ffffff;
+  position: relative;
+  height: auto;
+   background-image: url("../../assets/hero1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+}
+
+.hiring-container {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 60px;
+  text-align: left;
+}
+
+.hiring-container,
+.status-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.hiring-container.visible,
+.status-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.highlight {
+  color: #00e1ff;
+  position: relative;
+}
+
+@keyframes slide {
+  from { transform: scaleX(0.3); opacity: 0.6; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #d3d3d3;
+  line-height: 1.8;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.status-card {
+  background: #ffffff1c;
+  border-radius: 2px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 123, 255, 0.15);
+}
+
+.status-card h3 {
+  color: #00e1ff;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.status-card p {
+  color: #d3d3d3;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.wj-link {
+  color: #00e1ff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.wj-link:hover {
+  color: #00e1ff;
+}
+
+.contact-text {
+  font-weight: 500;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.mail-link {
+  color: #00e1ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.mail-link:hover {
+  color: #00e1ff;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  
+.hiring-container {
+  padding: 30px;
+}
+  .hiring {
+    padding: 0;
+  }
+
+  .status-card {
+    padding: 20px;
+  }
+
+  .status-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+}

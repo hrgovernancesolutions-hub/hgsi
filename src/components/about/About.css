@@ -12,7 +12,7 @@
 }
 
 .about {
-  padding: 8% 60px 60px 60px;
+  padding: 10% 60px 60px 60px;
   opacity: 0;
   transform: translateY(60px);
   background: linear-gradient(135deg, #0a0f24, #1a2a6c, #b21f1f, #fdbb2d);
@@ -175,7 +175,7 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 20% 10% 10% 10%;
+    padding: 30% 10% 10% 10%;
   }
 
   .about-container {

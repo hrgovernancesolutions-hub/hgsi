@@ -13,7 +13,25 @@ function Hero() {
       }}
     >
       <h1>HR Governance Solutions</h1>
-      <p>Your trusted partner for strategic HR solutions, compliance management, and organizational excellence.</p>
+      <p>
+          Proudly serving as the <span className="highlight">India Service Center</span> for{' '}
+          <a
+            href="https://workforcejunction.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="wj-link"
+          >
+            Workforce Junction
+          </a> - delivering innovation, compliance, and excellence.
+        </p>
+        <a
+          href="https://workforcejunction.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-btn"
+        >
+          Explore Workforce Junction
+        </a>
     </section>
   );
 }

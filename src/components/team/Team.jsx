@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Team.css';
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import CEO from '../../assets/Matthew.jpg';
@@ -9,46 +9,38 @@ import HeadProductManagement from '../../assets/Denna.jpg';
 import HeadServiceOperations from '../../assets/Nitya.jpg';
 
 function Team() {
+  const teamRef = useRef(null);
+
   const teamMembers = [
-    {
-      name: 'Mathew Augustine',
-      role: 'CEO',
-      tag: 'The Challenge Champion',
-      img: CEO
-    },
-    {
-      name: 'Johnsey Joseph',
-      role: 'Head, Backoffice Services',
-      tag: 'The Relentless Ringleader',
-      img: HeadBackofficeServices
-    },{
-      name: 'Dilip Kumar',
-      role: 'Lead, Product Managementr',
-      tag: 'The Tenacious Translator',
-      img: LeadProductManagement
-    },
-    {
-      name: 'Shilpa Paritala',
-      role: 'Lead, Implementation and Onboarding',
-      tag: 'The Deployment Detailer',
-      img: LeadImplementationandOnboarding
-    },
-    {
-      name: 'Denna Mathew',
-      role: 'Head, Product Management',
-      tag: 'The Attentive Architect',
-      img: HeadProductManagement
-    },
-    {
-      name: 'Nitya Mathew',
-      role: 'Head, Service Operations',
-      tag: 'The Process Princess',
-      img: HeadServiceOperations
-    }
+    { name: 'Mathew Augustine', role: 'CEO', tag: 'The Challenge Champion', img: CEO },
+    { name: 'Johnsey Joseph', role: 'Head, Backoffice Services', tag: 'The Relentless Ringleader', img: HeadBackofficeServices },
+    { name: 'Dilip Kumar', role: 'Lead, Product Management', tag: 'The Tenacious Translator', img: LeadProductManagement },
+    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', tag: 'The Deployment Detailer', img: LeadImplementationandOnboarding },
+    { name: 'Denna Mathew', role: 'Head, Product Management', tag: 'The Attentive Architect', img: HeadProductManagement },
+    { name: 'Nitya Mathew', role: 'Head, Service Operations', tag: 'The Process Princess', img: HeadServiceOperations }
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const cards = teamRef.current.querySelectorAll('.team-card');
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="team">
+    <section className="team" ref={teamRef}>
       <div className="team-heading">
         <h2>Meet Our Team</h2>
         <p>

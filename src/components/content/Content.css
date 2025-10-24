@@ -17,6 +17,20 @@
   background-attachment: fixed;
   display: flex;
 }
+
+.overlay-vision-c,
+.overlay-whyus-c {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.overlay-vision-c.visible,
+.overlay-whyus-c.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .content-vision h2,
 .content-whyus h2{
   color: #00e1ff;

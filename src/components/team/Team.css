@@ -19,7 +19,7 @@
 
 .team-heading h2 {
   margin-bottom: 10px;
-  color: #fff;
+  color: #00e1ff;
 }
 
 .team-heading p {
@@ -43,8 +43,14 @@
   max-width: 200px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
-
+.team-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .team-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
@@ -96,7 +102,7 @@
 
 @media (max-width: 768px) {
   .team {
-    padding: 50px 6%;
+    padding: 40px 6%;
   }
 
   .team-heading h2 {
@@ -117,9 +123,12 @@
 }
 
 @media (max-width: 480px) {
+   .team {
+    padding: 20px 6%;
+  }
   .team-container {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
+    gap: 10px;
   }
 
   .team-info h3 {
@@ -128,10 +137,6 @@
 
   .team-info p {
     font-size: 0.7rem;
-  }
-
-  .team-card {
-    max-width: 160px;
   }
 
   .team-img img {
