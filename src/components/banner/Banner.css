@@ -113,7 +113,7 @@
 
 @media (max-width: 480px) {
   .banner-content {
-    top: -80px;
+    top: 20px;
     width: 95%;
   }
 

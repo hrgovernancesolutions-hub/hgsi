@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import logo from "../../assets/HGSI-logo.JPG";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Logo from "../../assets/HGSI_Logo.png";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   const handleScroll = (e, id) => {
     e.preventDefault();
     const section = document.querySelector(id);
@@ -17,12 +18,17 @@ function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar-container">
-        <div className="navbar-logo">
-          <h1>HGSI</h1>
+        <div
+          className="navbar-logo"
+          onClick={(e) => handleScroll(e, "#home")}
+        >
+          <img src={Logo} alt="HGSI Logo" className="logo-img" />
         </div>
+
         <div className="menu-icon" onClick={() => setMenuOpen(true)}>
           <FaBars />
         </div>
+
         <div className="navbar-right">
           <ul>
             <li><a href="#home" onClick={(e) => handleScroll(e, "#home")}>Home</a></li>
@@ -31,6 +37,7 @@ function Navbar() {
             <li><a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Contact</a></li>
           </ul>
         </div>
+
         <div className={`mobile-panel ${menuOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={() => setMenuOpen(false)}>
             <FaTimes />

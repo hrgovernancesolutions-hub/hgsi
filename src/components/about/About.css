@@ -175,7 +175,7 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 30% 10% 10% 10%;
+    padding: 20% 10% 10% 10%;
   }
 
   .about-container {
@@ -208,6 +208,10 @@
   }
 }
 @media (max-width: 480px) {
+  .about {
+    padding: 55% 20px 20px 20px;
+  }
+
 
   .about-left h2 {
     font-size: 1.5rem;

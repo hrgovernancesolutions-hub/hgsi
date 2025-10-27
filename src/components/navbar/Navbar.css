@@ -11,34 +11,32 @@
   transition: background 0.3s ease;
 }
 
-
 .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
 }
 
-/* .navbar-logo {
-  height: 48px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-} */
+/* ✅ Logo styling */
 .navbar-logo {
   cursor: pointer;
+  display: flex;
+  align-items: center;
   transition: transform 0.3s ease;
 }
-.navbar-logo h1 {
-  font-size: 40px;
-  font-weight: 500;
-  font-style: normal;
-  margin: 0;
-  color: #00e1ff;
-}
+
 .navbar-logo:hover {
   transform: scale(1.05);
 }
 
+.logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ✅ Desktop Navigation */
 .navbar-right ul {
   display: flex;
   align-items: center;
@@ -77,12 +75,11 @@
   width: 100%;
 }
 
-
-
+/* ✅ Mobile */
 .menu-icon {
   display: none;
   font-size: 1.8rem;
-  color: White;
+  color: white;
   cursor: pointer;
 }
 
@@ -91,9 +88,6 @@
 }
 
 @media (max-width: 768px) {
-    .navbar-logo h1 {
-        font-size: 32px;
-    }
   .navbar-right {
     display: none;
   }
@@ -151,5 +145,9 @@
 
   .mobile-panel a:hover {
     color: #007bff;
+  }
+
+  .logo-img {
+    height: 40px;
   }
 }
