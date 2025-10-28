@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Logo from "../../assets/HGSI_Logo.jpg";
+import Logo from "../../assets/HGSI_LOGO.JPG";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
