@@ -4,10 +4,11 @@
   left: 0;
   width: 100%;
   z-index: 2000;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+  background: #ffffff;
   transition: background 0.3s ease;
 }
 
@@ -31,7 +32,7 @@
 }
 
 .logo-img {
-  height: 48px;
+  height: 50px !important;
   width: auto;
   object-fit: contain;
 }
@@ -49,7 +50,7 @@
 .navbar-right a {
   position: relative;
   text-decoration: none;
-  color: #00e1ff;
+  color: black;
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -62,12 +63,11 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: black;
+  background: #00e1ff;
   transition: width 0.3s ease;
 }
 
 .navbar-right a:hover {
-  color: #00e1ff;
   transform: scale(1.05);
 }
 
@@ -79,7 +79,7 @@
 .menu-icon {
   display: none;
   font-size: 1.8rem;
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
