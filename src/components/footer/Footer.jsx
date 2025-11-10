@@ -30,7 +30,7 @@ function Footer() {
         </div>
         <div className="footer-contact">
           <h3>Contact Us</h3>
-          <p>Email: <a href="mailto:hr@hrgovernancesolutions.com">hr@hrgovernancesolutions.com</a></p>
+          <p>Email: <a href="mailto:HGSI.HR@workforcejunction.com">HGSI.HR@workforcejunction.com</a></p>
           <p>India Service Center for <a href="https://workforcejunction.com" target="_blank" rel="noreferrer">Workforce Junction</a></p>
         </div>
       </div>

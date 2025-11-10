@@ -50,8 +50,8 @@ function Hiring() {
 
           <p className="contact-text">
             For career-related inquiries, you can reach us at:<br />
-            <a href="mailto:hr@hrgovernancesolutions.com" className="mail-link">
-              hr@hrgovernancesolutions.com
+            <a href="mailto:HGSI.HR@workforcejunction.com" className="mail-link">
+              HGSI.HR@workforcejunction.com
             </a>
           </p>
         </div>

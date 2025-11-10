@@ -12,12 +12,12 @@ function Team() {
   const teamRef = useRef(null);
 
   const teamMembers = [
-    { name: 'Mathew Augustine', role: 'CEO', tag: 'The Challenge Champion', img: CEO },
+    // { name: 'Mathew Augustine', role: 'CEO', tag: 'The Challenge Champion', img: CEO },
     { name: 'Johnsey Joseph', role: 'Head, Backoffice Services', tag: 'The Relentless Ringleader', img: HeadBackofficeServices },
     { name: 'Dilip Kumar', role: 'Lead, Product Management', tag: 'The Tenacious Translator', img: LeadProductManagement },
-    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', tag: 'The Deployment Detailer', img: LeadImplementationandOnboarding },
-    { name: 'Denna Mathew', role: 'Head, Product Management', tag: 'The Attentive Architect', img: HeadProductManagement },
-    { name: 'Nitya Mathew', role: 'Head, Service Operations', tag: 'The Process Princess', img: HeadServiceOperations }
+    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', tag: 'The Deployment Detailer', img: LeadImplementationandOnboarding }
+    // { name: 'Denna Mathew', role: 'Head, Product Management', tag: 'The Attentive Architect', img: HeadProductManagement },
+    // { name: 'Nitya Mathew', role: 'Head, Service Operations', tag: 'The Process Princess', img: HeadServiceOperations }
   ];
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function Team() {
             <div className="team-info">
               <h3>{member.name}</h3>
               <p>{member.role}</p>
-              <span>{member.tag}</span>
+              {/* <span>{member.tag}</span> */}
             </div>
           </div>
         ))}

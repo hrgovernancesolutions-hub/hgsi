@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 // Component Imports
@@ -12,25 +12,67 @@ import Hiring from "./components/hiring/Hiring";
 import Footer from "./components/footer/Footer";
 
 function App() {
+  useEffect(() => {
+    // ✅ Update document metadata dynamically for SEO
+    document.title = "HR Governance Solutions | Workforce Junction";
+
+    const description =
+      "HR Governance Solutions (Workforce Junction) provides HR, workforce, and compliance solutions that empower organizations to grow efficiently.";
+    const keywords =
+      "HR Governance Solutions, Workforce Junction, HR Solutions, Workforce Management, Employee Benefits, HR Consulting, HR Software, HR Compliance";
+
+    const setMeta = (name, content) => {
+      let element = document.querySelector(`meta[name='${name}']`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("name", name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    };
+
+    setMeta("description", description);
+    setMeta("keywords", keywords);
+  }, []);
+
   return (
-    <section className="app">
+    <main className="app">
+      {/* ✅ Navigation */}
       <Navbar />
-      <section id="home">
+
+      {/* ✅ Hero Section */}
+      <section id="home" aria-label="Home Section">
         <Hero />
       </section>
+
+      {/* ✅ Banner Section */}
       <Banner />
-      <section id="about">
+
+      {/* ✅ About Section */}
+      <section id="about" aria-label="About HR Governance Solutions">
         <About />
       </section>
-      <Content />
-      <section id="team">
+
+      {/* ✅ Vision / Why Us Section */}
+      <section id="content" aria-label="Our Vision and Why Choose Us">
+        <Content />
+      </section>
+
+      {/* ✅ Team Section */}
+      <section id="team" aria-label="Our Team">
         <Team />
       </section>
-      <Hiring />
-      <section id="contact">
+
+      {/* ✅ Hiring Section */}
+      <section id="hiring" aria-label="Career Opportunities">
+        <Hiring />
+      </section>
+
+      {/* ✅ Footer / Contact Section */}
+      <section id="contact" aria-label="Contact HR Governance Solutions">
         <Footer />
       </section>
-    </section>
+    </main>
   );
 }
 
