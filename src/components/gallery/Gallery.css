@@ -1,0 +1,36 @@
+.gallery-page {
+  padding: 0;
+  margin: 0;
+}
+
+/* Masonry collage */
+.gallery-grid {
+  column-count: 5;          /* number of vertical columns */
+  column-gap: 0;
+  row-gap: 5px;           /* NO space between photos */
+  width: 100%;
+  padding: 20px;
+}
+
+.gallery-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  break-inside: avoid;      /* prevents breaking inside columns */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    column-count: 1;
+  }
+}

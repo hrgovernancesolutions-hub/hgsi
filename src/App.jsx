@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Component Imports
 import Navbar from "./components/navbar/Navbar";
@@ -10,10 +11,10 @@ import Content from "./components/content/Content";
 import Team from "./components/team/Team";
 import Hiring from "./components/hiring/Hiring";
 import Footer from "./components/footer/Footer";
+import Gallery from "./components/gallery/Gallery";
 
 function App() {
   useEffect(() => {
-    // ✅ Update document metadata dynamically for SEO
     document.title = "HR Governance Solutions | Workforce Junction";
 
     const description =
@@ -36,43 +37,63 @@ function App() {
   }, []);
 
   return (
-    <main className="app">
-      {/* ✅ Navigation */}
-      <Navbar />
+    <Router>
+      <main className="app">
 
-      {/* ✅ Hero Section */}
-      <section id="home" aria-label="Home Section">
-        <Hero />
-      </section>
+        {/* ROUTES */}
+        <Routes>
 
-      {/* ✅ Banner Section */}
-      <Banner />
+          {/* Homepage */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar />
 
-      {/* ✅ About Section */}
-      <section id="about" aria-label="About HR Governance Solutions">
-        <About />
-      </section>
+                <section id="home">
+                  <Hero />
+                </section>
 
-      {/* ✅ Vision / Why Us Section */}
-      <section id="content" aria-label="Our Vision and Why Choose Us">
-        <Content />
-      </section>
+                <Banner />
 
-      {/* ✅ Team Section */}
-      <section id="team" aria-label="Our Team">
-        <Team />
-      </section>
+                <section id="about">
+                  <About />
+                </section>
 
-      {/* ✅ Hiring Section */}
-      <section id="hiring" aria-label="Career Opportunities">
-        <Hiring />
-      </section>
+                <section id="content">
+                  <Content />
+                </section>
 
-      {/* ✅ Footer / Contact Section */}
-      <section id="contact" aria-label="Contact HR Governance Solutions">
-        <Footer />
-      </section>
-    </main>
+                <section id="team">
+                  <Team />
+                </section>
+
+                <section id="hiring">
+                  <Hiring />
+                </section>
+
+                <section id="contact">
+                  <Footer />
+                </section>
+              </>
+            }
+          />
+
+          {/* Gallery Page (Separate Page) */}
+          <Route
+            path="/gallery"
+            element={
+              <>
+                <Navbar />
+                <Gallery />
+                <Footer />
+              </>
+            }
+          />
+
+        </Routes>
+      </main>
+    </Router>
   );
 }
 

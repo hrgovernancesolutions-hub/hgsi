@@ -1,23 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import './Team.css';
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
-import CEO from '../../assets/Matthew.jpg';
+
 import HeadBackofficeServices from '../../assets/johnsey-johnson.jpg';
-import LeadProductManagement from '../../assets/Dillip.jpg';
-import LeadImplementationandOnboarding from '../../assets/Shlipa.jpg';
-import HeadProductManagement from '../../assets/Denna.jpg';
-import HeadServiceOperations from '../../assets/Nitya.jpg';
+import LeadProductManagement from '../../assets/Dilip4.JPG';
+import LeadImplementationandOnboarding from '../../assets/Shilpa.jpg';
+import MunirajuImg from '../../assets/MunirajuGJ.png';
+import RajkumarImg from '../../assets/RajKumar.jpg';
+import VeluImg from '../../assets/Velu.jpg';
+import SumaImg from '../../assets/Suma.png';
 
 function Team() {
   const teamRef = useRef(null);
 
   const teamMembers = [
-    // { name: 'Mathew Augustine', role: 'CEO', tag: 'The Challenge Champion', img: CEO },
-    { name: 'Johnsey Joseph', role: 'Head, Backoffice Services', tag: 'The Relentless Ringleader', img: HeadBackofficeServices },
-    { name: 'Dilip Kumar', role: 'Lead, Product Management', tag: 'The Tenacious Translator', img: LeadProductManagement },
-    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', tag: 'The Deployment Detailer', img: LeadImplementationandOnboarding }
-    // { name: 'Denna Mathew', role: 'Head, Product Management', tag: 'The Attentive Architect', img: HeadProductManagement },
-    // { name: 'Nitya Mathew', role: 'Head, Service Operations', tag: 'The Process Princess', img: HeadServiceOperations }
+    { name: 'Johnsey Joseph', role: 'Head, Backoffice Services', img: HeadBackofficeServices },
+    { name: 'Dilip Kumar', role: 'Lead, Product Management', img: LeadProductManagement },
+    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', img: LeadImplementationandOnboarding },
+    { name: 'Suma', role: 'Human resources', img: SumaImg },
+    { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg },
+    { name: 'Muniraju GJ', role: 'Senior Team Lead', img: MunirajuImg },
+    { name: 'Raj Kumar C R', role: 'Team Lead', img: RajkumarImg },
   ];
 
   useEffect(() => {
@@ -44,7 +47,7 @@ function Team() {
       <div className="team-heading">
         <h2>Meet Our Team</h2>
         <p>
-          Our talented professionals are the backbone of HGSI - bringing innovation, integrity, 
+          Our talented professionals are the backbone of HGSI – bringing innovation, integrity,
           and excellence to every project we deliver.
         </p>
       </div>
@@ -58,7 +61,6 @@ function Team() {
             <div className="team-info">
               <h3>{member.name}</h3>
               <p>{member.role}</p>
-              {/* <span>{member.tag}</span> */}
             </div>
           </div>
         ))}

@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.JPG";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const section = document.querySelector(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
+  const goToSection = (sectionId) => {
+    if (location.pathname !== "/") {
+      // Go to homepage first
+      navigate("/");
+
+      // Delay scrolling because page loads first
+      setTimeout(() => {
+        const section = document.querySelector(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    } else {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
+
+    setMenuOpen(false);
   };
 
   return (
     <header className="navbar">
       <nav className="navbar-container">
-        <div
-          className="navbar-logo"
-          onClick={(e) => handleScroll(e, "#home")}
-        >
+        <div className="navbar-logo" onClick={() => goToSection("#home")}>
           <img src={Logo} alt="HGSI Logo" className="logo-img" />
         </div>
 
@@ -31,10 +44,14 @@ function Navbar() {
 
         <div className="navbar-right">
           <ul>
-            <li><a href="#home" onClick={(e) => handleScroll(e, "#home")}>Home</a></li>
-            <li><a href="#about" onClick={(e) => handleScroll(e, "#about")}>About</a></li>
-            <li><a href="#team" onClick={(e) => handleScroll(e, "#team")}>Team</a></li>
-            <li><a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Contact</a></li>
+            <li><button onClick={() => goToSection("#home")}>Home</button></li>
+            <li><button onClick={() => goToSection("#about")}>About</button></li>
+            <li><button onClick={() => goToSection("#team")}>Team</button></li>
+
+            {/* Gallery Page */}
+            <li><Link to="/gallery">Gallery</Link></li>
+
+            <li><button onClick={() => goToSection("#contact")}>Contact</button></li>
           </ul>
         </div>
 
@@ -43,10 +60,14 @@ function Navbar() {
             <FaTimes />
           </button>
           <ul>
-            <li><a href="#home" onClick={(e) => handleScroll(e, "#home")}>Home</a></li>
-            <li><a href="#about" onClick={(e) => handleScroll(e, "#about")}>About</a></li>
-            <li><a href="#team" onClick={(e) => handleScroll(e, "#team")}>Team</a></li>
-            <li><a href="#contact" onClick={(e) => handleScroll(e, "#contact")}>Contact</a></li>
+            <li><button onClick={() => goToSection("#home")}>Home</button></li>
+            <li><button onClick={() => goToSection("#about")}>About</button></li>
+            <li><button onClick={() => goToSection("#team")}>Team</button></li>
+
+            {/* Gallery in mobile */}
+            <li><Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link></li>
+
+            <li><button onClick={() => goToSection("#contact")}>Contact</button></li>
           </ul>
         </div>
       </nav>
