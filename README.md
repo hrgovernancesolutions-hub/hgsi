@@ -31,7 +31,3 @@ This project includes a floating navbar, smooth scrolling, a responsive gallery,
 - Organized file structure  
 - CSS modules / component-level styling
 
----
-
-## 📁 Project Structure
-
