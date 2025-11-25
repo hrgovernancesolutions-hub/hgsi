@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,31 +6,42 @@ import Logo from "../../assets/Logo.JPG";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
+
+  // ✅ Handle floating navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const goToSection = (sectionId) => {
     if (location.pathname !== "/") {
       navigate("/");
-
       setTimeout(() => {
         const section = document.querySelector(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
+        if (section) section.scrollIntoView({ behavior: "smooth" });
       }, 300);
     } else {
       const section = document.querySelector(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     }
 
     setMenuOpen(false);
   };
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <nav className="navbar-container">
         <div className="navbar-logo" onClick={() => goToSection("#home")}>
           <img src={Logo} alt="HGSI Logo" className="logo-img" />
