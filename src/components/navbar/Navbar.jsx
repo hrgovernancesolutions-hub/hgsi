@@ -11,10 +11,8 @@ function Navbar() {
 
   const goToSection = (sectionId) => {
     if (location.pathname !== "/") {
-      // Go to homepage first
       navigate("/");
 
-      // Delay scrolling because page loads first
       setTimeout(() => {
         const section = document.querySelector(sectionId);
         if (section) {
@@ -48,7 +46,6 @@ function Navbar() {
             <li><button onClick={() => goToSection("#about")}>About</button></li>
             <li><button onClick={() => goToSection("#team")}>Team</button></li>
 
-            {/* Gallery Page */}
             <li><Link to="/gallery">Gallery</Link></li>
 
             <li><button onClick={() => goToSection("#contact")}>Contact</button></li>
@@ -64,7 +61,6 @@ function Navbar() {
             <li><button onClick={() => goToSection("#about")}>About</button></li>
             <li><button onClick={() => goToSection("#team")}>Team</button></li>
 
-            {/* Gallery in mobile */}
             <li><Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link></li>
 
             <li><button onClick={() => goToSection("#contact")}>Contact</button></li>

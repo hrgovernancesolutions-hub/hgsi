@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./About.css";
-import aboutImg from "../../assets/hero2.png";
+import aboutImg from "../../assets/img8.jpg";
 
 function About() {
   const aboutRef = useRef(null);
@@ -38,7 +38,7 @@ function About() {
               support in <strong>employee benefits administration</strong>,{" "}
               <strong>HR compliance</strong>, <strong>payroll operations</strong>,
               and <strong>workforce management solutions</strong> for Workforce
-              Junction’s clients across the globe.
+              Junction's clients across the globe.
             </p>
 
             <p>
