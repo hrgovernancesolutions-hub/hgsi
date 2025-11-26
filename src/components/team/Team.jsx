@@ -14,13 +14,13 @@ function Team() {
   const teamRef = useRef(null);
 
   const teamMembers = [
-    { name: 'Johnsey Joseph', role: 'Head, Backoffice Services', img: HeadBackofficeServices },
-    { name: 'Dilip Kumar', role: 'Lead, Product Management', img: LeadProductManagement },
-    { name: 'Shilpa Paritala', role: 'Lead, Implementation and Onboarding', img: LeadImplementationandOnboarding },
-    { name: 'Suma', role: 'Human resources', img: SumaImg },
-    { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg },
+    { name: 'Johnsey Joseph', role: 'Manging Director', img: HeadBackofficeServices },
+    { name: 'Dilip Kumar', role: 'Head of Operations', img: LeadProductManagement },
+    { name: 'Shilpa Paritala', role: 'Operations Manager', img: LeadImplementationandOnboarding },
+    { name: 'Suma Hegde', role: 'Human resources', img: SumaImg },
     { name: 'Muniraju GJ', role: 'Senior Team Lead', img: MunirajuImg },
     { name: 'Raj Kumar C R', role: 'Team Lead', img: RajkumarImg },
+    { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg },
   ];
 
   useEffect(() => {

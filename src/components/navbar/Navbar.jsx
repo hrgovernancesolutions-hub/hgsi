@@ -11,7 +11,6 @@ function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // ✅ Handle floating navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 40) {

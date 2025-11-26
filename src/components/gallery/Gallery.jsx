@@ -14,7 +14,6 @@ import img8 from "../../assets/img8.jpg";
 export default function Gallery() {
   const images = [
     img1, img2, img3, img4, img5, img6, img7, img8,
-    img3, img2, img4, img1, img6, img5
   ];
 
   const [popupIndex, setPopupIndex] = useState(null);
