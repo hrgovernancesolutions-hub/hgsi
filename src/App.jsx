@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-// Component Imports
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import Banner from "./components/banner/Banner";
@@ -40,10 +39,8 @@ function App() {
     <Router>
       <main className="app">
 
-        {/* ROUTES */}
         <Routes>
 
-          {/* Homepage */}
           <Route
             path="/"
             element={
@@ -78,8 +75,7 @@ function App() {
               </>
             }
           />
-
-          {/* Gallery Page (Separate Page) */}
+          
           <Route
             path="/gallery"
             element={

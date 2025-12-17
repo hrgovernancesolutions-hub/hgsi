@@ -10,10 +10,13 @@ import img5 from "../../assets/img5.jpeg";
 import img6 from "../../assets/img6.jpeg";
 import img7 from "../../assets/img7.jpeg";
 import img8 from "../../assets/img8.jpg";
+import img9 from "../../assets/img9.jpg";
+import img10 from "../../assets/img10.jpg";
+import img11 from "../../assets/img11.jpg";
 
 export default function Gallery() {
   const images = [
-    img1, img2, img3, img4, img5, img6, img7, img8,
+    img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11
   ];
 
   const [popupIndex, setPopupIndex] = useState(null);
@@ -28,7 +31,6 @@ export default function Gallery() {
   const showNext = () =>
     setPopupIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
 
-  /* Reveal Animation for Bottom Content */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,7 +47,6 @@ export default function Gallery() {
   return (
     <section className="gallery-page">
 
-      {/* Masonry Grid */}
       <div className="gallery-grid">
         {images.map((src, index) => (
           <img
@@ -59,7 +60,6 @@ export default function Gallery() {
         ))}
       </div>
 
-      {/* Popup */}
       {popupIndex !== null && (
         <div className="popup-overlay" onClick={closePopup}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
@@ -83,7 +83,6 @@ export default function Gallery() {
         </div>
       )}
 
-      {/* Bottom Content */}
       <div className="gallery-content-section" ref={contentRef}>
         <h2>Memories That Define Us</h2>
         <p>
