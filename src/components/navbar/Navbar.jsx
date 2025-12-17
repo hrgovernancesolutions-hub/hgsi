@@ -1,81 +1,91 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import Logo from "../../assets/Logo.JPG";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const goToSection = (sectionId) => {
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        const section = document.querySelector(sectionId);
-        if (section) section.scrollIntoView({ behavior: "smooth" });
-      }, 300);
-    } else {
-      const section = document.querySelector(sectionId);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    }
-
-    setMenuOpen(false);
-  };
-
   return (
     <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <nav className="navbar-container">
-        <div className="navbar-logo" onClick={() => goToSection("#home")}>
-          <img src={Logo} alt="HGSI Logo" className="logo-img" />
+
+        {/* LOGO */}
+        <div className="navbar-logo">
+          <HashLink smooth to="/#home">
+            <img src={Logo} alt="HGSI Logo" className="logo-img" />
+          </HashLink>
         </div>
 
+        {/* HAMBURGER */}
         <div className="menu-icon" onClick={() => setMenuOpen(true)}>
           <FaBars />
         </div>
 
+        {/* DESKTOP MENU */}
         <div className="navbar-right">
           <ul>
-            <li><button onClick={() => goToSection("#home")}>Home</button></li>
-            <li><button onClick={() => goToSection("#about")}>About</button></li>
-            <li><button onClick={() => goToSection("#team")}>Team</button></li>
+            <li><HashLink smooth to="/#home">Home</HashLink></li>
+            <li><HashLink smooth to="/#about">About</HashLink></li>
+            <li><HashLink smooth to="/#team">Team</HashLink></li>
 
             <li><Link to="/gallery">Gallery</Link></li>
 
-            <li><button onClick={() => goToSection("#contact")}>Contact</button></li>
+            <li><HashLink smooth to="/#contact">Contact</HashLink></li>
           </ul>
         </div>
 
+        {/* MOBILE MENU */}
         <div className={`mobile-panel ${menuOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={() => setMenuOpen(false)}>
             <FaTimes />
           </button>
+
           <ul>
-            <li><button onClick={() => goToSection("#home")}>Home</button></li>
-            <li><button onClick={() => goToSection("#about")}>About</button></li>
-            <li><button onClick={() => goToSection("#team")}>Team</button></li>
+            <li>
+              <HashLink smooth to="/#home" onClick={() => setMenuOpen(false)}>
+                Home
+              </HashLink>
+            </li>
 
-            <li><Link to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</Link></li>
+            <li>
+              <HashLink smooth to="/#about" onClick={() => setMenuOpen(false)}>
+                About
+              </HashLink>
+            </li>
 
-            <li><button onClick={() => goToSection("#contact")}>Contact</button></li>
+            <li>
+              <HashLink smooth to="/#team" onClick={() => setMenuOpen(false)}>
+                Team
+              </HashLink>
+            </li>
+
+            <li>
+              <Link to="/gallery" onClick={() => setMenuOpen(false)}>
+                Gallery
+              </Link>
+            </li>
+
+            <li>
+              <HashLink smooth to="/#contact" onClick={() => setMenuOpen(false)}>
+                Contact
+              </HashLink>
+            </li>
           </ul>
         </div>
+
       </nav>
     </header>
   );

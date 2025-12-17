@@ -18,8 +18,9 @@ function App() {
 
     const description =
       "HR Governance Solutions (Workforce Junction) provides HR, workforce, and compliance solutions that empower organizations to grow efficiently.";
+
     const keywords =
-      "HR Governance Solutions, Workforce Junction, HR Solutions, Workforce Management, Employee Benefits, HR Consulting, HR Software, HR Compliance";
+      "HR Governance Solutions, Workforce Junction, HR Solutions, Workforce Management, HR Compliance";
 
     const setMeta = (name, content) => {
       let element = document.querySelector(`meta[name='${name}']`);
@@ -38,7 +39,6 @@ function App() {
   return (
     <Router>
       <main className="app">
-
         <Routes>
 
           <Route
@@ -75,7 +75,7 @@ function App() {
               </>
             }
           />
-          
+
           <Route
             path="/gallery"
             element={
