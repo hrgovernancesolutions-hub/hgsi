@@ -22,19 +22,16 @@ function Navbar() {
     <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <nav className="navbar-container">
 
-        {/* LOGO */}
         <div className="navbar-logo">
           <HashLink smooth to="/#home">
             <img src={Logo} alt="HGSI Logo" className="logo-img" />
           </HashLink>
         </div>
 
-        {/* HAMBURGER */}
         <div className="menu-icon" onClick={() => setMenuOpen(true)}>
           <FaBars />
         </div>
 
-        {/* DESKTOP MENU */}
         <div className="navbar-right">
           <ul>
             <li><HashLink smooth to="/#home">Home</HashLink></li>
@@ -47,7 +44,6 @@ function Navbar() {
           </ul>
         </div>
 
-        {/* MOBILE MENU */}
         <div className={`mobile-panel ${menuOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={() => setMenuOpen(false)}>
             <FaTimes />
