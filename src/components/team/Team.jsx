@@ -3,12 +3,12 @@ import './Team.css';
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
 import HeadBackofficeServices from '../../assets/Teams/johnseyjoseph.png';
-import LeadProductManagement from '../../assets/Teams/DillipFinal.png';
-import LeadImplementationandOnboarding from '../../assets/Teams/ShilpaFinal.jpg';
-import MunirajuImg from '../../assets/Teams/MunirajuFinal.png';
-import RajkumarImg from '../../assets/Teams/RajkumarFinal.png';
-import VeluImg from '../../assets/Teams/VeluFinal.jpg';
-import SumaImg from '../../assets/Teams/SumaFinal.png';
+import LeadProductManagement from '../../assets/Teams/dillipfinal.png';
+import LeadImplementationandOnboarding from '../../assets/Teams/shilpafinal.jpg';
+import MunirajuImg from '../../assets/Teams/munirajufinal.png';
+import RajkumarImg from '../../assets/Teams/rajkumarfinal.png';
+import VeluImg from '../../assets/Teams/velufinal.jpg';
+import SumaImg from '../../assets/Teams/sumafinal.png';
 
 function Team() {
   const teamRef = useRef(null);
