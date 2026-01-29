@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './Team.css';
 import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
-import HeadBackofficeServices from '../../assets/Teams/johnseyFinal.jpg';
+import HeadBackofficeServices from '../../assets/Teams/johnseyjoseph.png';
 import LeadProductManagement from '../../assets/Teams/DillipFinal.png';
 import LeadImplementationandOnboarding from '../../assets/Teams/ShilpaFinal.jpg';
 import MunirajuImg from '../../assets/Teams/MunirajuFinal.png';
