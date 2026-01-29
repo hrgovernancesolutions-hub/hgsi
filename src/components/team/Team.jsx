@@ -5,7 +5,7 @@ import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 import HeadBackofficeServices from '../../assets/TeamMembers/johnseyfinal.png';
 import LeadProductManagement from '../../assets/TeamMembers/dillipfinal.png';
 import LeadImplementationandOnboarding from '../../assets/TeamMembers/shilpafinal.jpg';
-import MunirajuImg from '../../assets/TeamMembers/dillipfinal.png';
+import MunirajuImg from '../../assets/TeamMembers/munirajufinal.png';
 import RajkumarImg from '../../assets/TeamMembers/rajkumarfinal.png';
 import VeluImg from '../../assets/TeamMembers/velufinal.jpg';
 import SumaImg from '../../assets/TeamMembers/sumafinal.png';
