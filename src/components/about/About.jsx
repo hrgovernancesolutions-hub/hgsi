@@ -59,29 +59,10 @@ function About() {
             </p>
           </div>
 
-          {/* ✅ Right Section */}
+          {/* ✅ Right Section - Updated */}
           <div className="about-right">
-            <div
-              className="image-frame"
-              role="img"
-              aria-label="HGSI India Service Center"
-            >
-              <div
-                className="image-slice slice1"
-                style={{ backgroundImage: `url(${aboutImg})` }}
-              ></div>
-              <div
-                className="image-slice slice2"
-                style={{ backgroundImage: `url(${aboutImg})` }}
-              ></div>
-              <div
-                className="image-slice slice3"
-                style={{ backgroundImage: `url(${aboutImg})` }}
-              ></div>
-              <div
-                className="image-slice slice4"
-                style={{ backgroundImage: `url(${aboutImg})` }}
-              ></div>
+            <div className="image-wrapper">
+              <img src={aboutImg} alt="HGSI India Service Center" className="about-image" />
             </div>
           </div>
         </div>
