@@ -74,7 +74,7 @@
   position: relative;
   width: 100%;
   max-width: 500px;
-  border-radius: 5px;
+  border-radius: 2px;
   overflow: hidden; /* Ensures image zoom doesn't go outside corners */
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Nice 3D shadow */
   
