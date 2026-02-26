@@ -26,16 +26,15 @@ function Hero() {
   };
 
   return (
-    <section
-      className="hero"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${heroBg})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed', // Parallax effect
-      }}
-    >
+    <section className="hero">
+      
+      <div 
+        className="hero-fixed-bg"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${heroBg})`
+        }}
+      ></div>
+
       <div className="hero-content">
         <h1>{renderBouncyLetters(titleText)}</h1>
         

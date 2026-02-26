@@ -1,7 +1,7 @@
 /* --- Hero Container --- */
 .hero {
   position: relative;
-  background-color: #0a0f24; 
+  /* background-color removed (handled by fixed layer) */
   height: 100vh;
   color: #fff;
   text-align: center;
@@ -11,6 +11,21 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+/* ✅ SCROLL FIX: Fixed Background Layer */
+.hero-fixed-bg {
+  position: fixed; /* Keeps it fixed without the iOS bug */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1; /* Puts it behind content */
+  
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform; /* Performance boost for mobile */
 }
 
 .hero-content {
@@ -218,9 +233,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    background-attachment: scroll !important;
-    background-position: center center !important;
-    background-size: cover;
+    /* No bg properties needed here anymore, fixed div handles it */
     padding: 80px 20px;
   }
 
