@@ -166,13 +166,19 @@
   color: #00e1ff;
   font-weight: 600;
 }
+/* ... existing code ... */
+
 
 @media (max-width: 900px) {
   .hgsi-flex-wrapper {
     flex-direction: column;
     align-items: center;
   }
-  
+  .hgsi-content-section {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover;
+  }
   .hgsi-flex-wrapper.reverse {
     flex-direction: column-reverse; 
   }
