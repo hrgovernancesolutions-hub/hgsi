@@ -1,17 +1,32 @@
+/* --- Base Layout --- */
 .hgsi-content-section {
   width: 100%;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  /* Note: Background image is removed from here and moved to .hgsi-fixed-bg */
+}
+
+/* --- ✅ TRUE PARALLAX FIXED BACKGROUND --- */
+.hgsi-fixed-bg {
+  position: fixed; /* Key for iOS Parallax */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1; /* Puts it behind everything */
   
+  /* Apply your image and gradients here */
   background-image: 
     linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9)),
     linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9)),
     url("../../assets/heroimagelates.png");
-
+    
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   background-repeat: no-repeat;
+  
+  /* Performance booster for mobile */
+  will-change: transform; 
 }
 
 .hgsi-content-container {
@@ -21,6 +36,7 @@
   gap: 30px;
 }
 
+/* --- Content Blocks --- */
 .hgsi-content-block {
   position: relative;
   min-height: auto; 
@@ -33,16 +49,17 @@
 
 .hgsi-content-vision { 
   justify-content: flex-start;
-  padding-top: 30px;  
-  padding-bottom: 0; 
+  padding-top: 100px;
+  padding-bottom: 30px; 
 }
 
 .hgsi-content-whyus { 
   justify-content: flex-end; 
-  padding-top: 0;
-  padding-bottom: 30px; 
+  padding-top: 30px;
+  padding-bottom: 100px; 
 }
 
+/* --- Spotlight Overlay --- */
 .hgsi-spotlight-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -54,6 +71,7 @@
 }
 .hgsi-content-block:hover .hgsi-spotlight-overlay { opacity: 1; }
 
+/* --- Flex Layout Wrapper --- */
 .hgsi-flex-wrapper {
   display: flex;
   align-items: stretch;
@@ -65,6 +83,7 @@
   position: relative;
 }
 
+/* --- Main Glass Card --- */
 .hgsi-glass-card {
   flex: 2; 
   padding: 35px;
@@ -86,6 +105,7 @@
   transform: translateY(0);
 }
 
+/* --- Extra Content (Side Panel) --- */
 .hgsi-extra-content {
   flex: 1; 
   padding: 30px;
@@ -111,6 +131,7 @@
   transform: translateX(0);
 }
 
+/* --- TYPOGRAPHY & LETTER HOVER ANIMATION --- */
 .hgsi-glass-card h2 {
   font-size: 1.8rem;
   margin-bottom: 15px;
@@ -119,6 +140,7 @@
   letter-spacing: 1.5px;
   cursor: default;
 }
+
 .hgsi-hover-char {
   display: inline-block;
   transition: transform 0.3s ease;
@@ -166,19 +188,14 @@
   color: #00e1ff;
   font-weight: 600;
 }
-/* ... existing code ... */
 
-
+/* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
   .hgsi-flex-wrapper {
     flex-direction: column;
     align-items: center;
   }
-  .hgsi-content-section {
-    background-attachment: scroll !important;
-    background-position: center center !important;
-    background-size: cover;
-  }
+  
   .hgsi-flex-wrapper.reverse {
     flex-direction: column-reverse; 
   }
@@ -191,16 +208,16 @@
   }
   
   .hgsi-content-block {
-    padding: 40px 20px;
+    padding: 20px;
   }
   
   .hgsi-content-vision {
-    padding-top: 20px;
+    padding-top: 60px;
     padding-bottom: 0;
   }
   
   .hgsi-content-whyus {
     padding-top: 0;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
   }
 }

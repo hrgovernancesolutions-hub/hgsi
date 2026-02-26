@@ -7,7 +7,6 @@ const AnimatedHeading = ({ text }) => {
     <h2>
       {text.split("").map((char, index) => (
         <span key={index} className="hgsi-hover-char">
-          {/* If char is a space, render a non-breaking space, else render the char */}
           {char === " " ? "\u00A0" : char}
         </span>
       ))}
@@ -56,6 +55,10 @@ function Content() {
 
   return (
     <section className="hgsi-content-section">
+      
+      {/* ✅ TRUE PARALLAX LAYER: Fixed background separate from content */}
+      <div className="hgsi-fixed-bg"></div>
+
       <div className="hgsi-content-container">
         
         {/* --- Section 1: Our Vision --- */}
@@ -68,16 +71,15 @@ function Content() {
           
           <div className="hgsi-flex-wrapper">
             <div className="hgsi-glass-card">
-              {/* ✅ UPDATED: Use AnimatedHeading here */}
               <AnimatedHeading text="Our Vision" />
               
               <div className="hgsi-text-content">
                 <p style={{ transitionDelay: '0.2s' }}>
                   At <strong>HR Governance Solutions India (HGSI)</strong>, our vision is to transform how organizations manage and deliver employee benefits. 
-                  We provide comprehensive, compliant, and technology enabled solutions that drive efficiency.
+                  We provide comprehensive, compliant, and technology-enabled solutions that drive efficiency.
                 </p>
                 <p style={{ transitionDelay: '0.3s' }}>
-                  As the <strong>India Service Center for Workforce Junction</strong>, we combine global best practices with local operational expertise to deliver seamless, high quality services.
+                  As the <strong>India Service Center for Workforce Junction</strong>, we combine global best practices with local operational expertise to deliver seamless, high-quality services.
                 </p>
               </div>
             </div>
@@ -108,12 +110,11 @@ function Content() {
             </div>
 
             <div className="hgsi-glass-card">
-              {/* ✅ UPDATED: Use AnimatedHeading here */}
               <AnimatedHeading text="Why Choose HGSI" />
               
               <div className="hgsi-text-content">
                 <p style={{ transitionDelay: '0.2s' }}>
-                  We are more than a service provider-we are a strategic partner. 
+                  We are more than a service provider—we are a strategic partner. 
                   By leveraging the Workforce Junction platform, we empower organizations to deliver enterprise-grade benefits with agility.
                 </p>
                 <p style={{ transitionDelay: '0.3s' }}>
