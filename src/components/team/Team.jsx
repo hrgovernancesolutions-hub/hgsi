@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Team.css';
-import { FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
+// Import Images
 import HeadBackofficeServices from '../../assets/TeamMembers/johnseyfinal.png';
 import LeadProductManagement from '../../assets/TeamMembers/dillipfinal.png';
 import LeadImplementationandOnboarding from '../../assets/TeamMembers/shilpafinal.jpg';
@@ -10,14 +10,27 @@ import RajkumarImg from '../../assets/TeamMembers/rajkumarfinal.png';
 import VeluImg from '../../assets/TeamMembers/velufinal.jpg';
 import SumaImg from '../../assets/TeamMembers/sumafinal.png';
 
+// Helper for Letter Animation
+const AnimatedHeading = ({ text }) => {
+  return (
+    <h2>
+      {text.split("").map((char, index) => (
+        <span key={index} className="team-hover-char">
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </h2>
+  );
+};
+
 function Team() {
   const teamRef = useRef(null);
 
   const teamMembers = [
-    { name: 'Johnsey Joseph', role: 'Manging Director', img: HeadBackofficeServices },
+    { name: 'Johnsey Joseph', role: 'Managing Director', img: HeadBackofficeServices },
     { name: 'Dilip Kumar', role: 'Head of Operations', img: LeadProductManagement },
     { name: 'Shilpa Paritala', role: 'Operations Manager', img: LeadImplementationandOnboarding },
-    { name: 'Suma Hegde', role: 'Human resources', img: SumaImg },
+    { name: 'Suma Hegde', role: 'Human Resources', img: SumaImg },
     { name: 'Muniraju GJ', role: 'Senior Team Lead', img: MunirajuImg },
     { name: 'Raj Kumar C R', role: 'Team Lead', img: RajkumarImg },
     { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg },
@@ -33,11 +46,11 @@ function Team() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    const cards = teamRef.current.querySelectorAll('.team-card');
-    cards.forEach(card => observer.observe(card));
+    const elements = teamRef.current.querySelectorAll('.team-card, .team-heading');
+    elements.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -45,18 +58,20 @@ function Team() {
   return (
     <section className="team" ref={teamRef}>
       <div className="team-heading">
-        <h2>Meet Our Team</h2>
-        <p>
-          Our talented professionals are the backbone of HGSI – bringing innovation, integrity,
-          and excellence to every project we deliver.
-        </p>
+        <AnimatedHeading text="Meet Our Team" />
+        <p>The innovators and leaders driving excellence at HGSI.</p>
       </div>
 
       <div className="team-container">
         {teamMembers.map((member, index) => (
-          <div className="team-card" key={index}>
+          <div 
+            className="team-card" 
+            key={index}
+            style={{ transitionDelay: `${index * 0.1}s` }} // Staggered entry
+          >
             <div className="team-img">
               <img src={member.img} alt={member.name} />
+              <div className="img-glow"></div>
             </div>
             <div className="team-info">
               <h3>{member.name}</h3>
