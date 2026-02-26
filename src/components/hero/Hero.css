@@ -71,13 +71,14 @@
 /* 2. Paragraph Styling */
 .hero p {
   font-size: 1.25rem;
-  color: #e0e0e0;
+  color: black !important; /* Solid black for maximum contrast */
   line-height: 1.7;
   margin-bottom: 40px;
   opacity: 0;
   transform: translateY(30px);
   animation: floatUp 1s ease-out forwards;
   animation-delay: 1.5s; /* Waits for title to finish */
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
 }
 
 /* 3. Button Wrapper */
@@ -144,13 +145,12 @@
 /* --- ELEMENT STYLES --- */
 
 .highlight {
-  color: #00e1ff;
+  color: black !important;
   font-weight: 700;
-  text-shadow: 0 0 15px rgba(0, 225, 255, 0.4);
 }
 
 .wj-link {
-  color: #00e1ff;
+  color: black !important;
   text-decoration: none;
   font-weight: 700;
   position: relative;
