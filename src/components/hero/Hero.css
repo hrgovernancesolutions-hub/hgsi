@@ -216,10 +216,11 @@
   transform: translateY(-5px);
 }
 
-/* --- MEDIA QUERIES --- */
 @media (max-width: 768px) {
   .hero {
-    background-attachment: scroll; /* Better performance on mobile */
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover;
     padding: 80px 20px;
   }
 
