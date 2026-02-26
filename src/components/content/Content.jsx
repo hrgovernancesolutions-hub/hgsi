@@ -1,13 +1,29 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./Content.css";
 
+// Helper Component for the letter animation
+const AnimatedHeading = ({ text }) => {
+  return (
+    <h2>
+      {text.split("").map((char, index) => (
+        <span key={index} className="hgsi-hover-char">
+          {/* If char is a space, render a non-breaking space, else render the char */}
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </h2>
+  );
+};
+
 function Content() {
   const visionRef = useRef(null);
   const whyusRef = useRef(null);
+
   const [visionVisible, setVisionVisible] = useState(false);
   const [whyusVisible, setWhyusVisible] = useState(false);
 
   const handleMouseMove = (e, ref) => {
+    if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -16,69 +32,94 @@ function Content() {
   };
 
   useEffect(() => {
-    const observerOptions = { threshold: 0.2 };
+    const observerOptions = { threshold: 0.25, rootMargin: "0px" };
 
-    const visionObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setVisionVisible(true);
-    }, observerOptions);
-
-    const whyusObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setWhyusVisible(true);
-    }, observerOptions);
-
-    if (visionRef.current) visionObserver.observe(visionRef.current);
-    if (whyusRef.current) whyusObserver.observe(whyusRef.current);
-
-    return () => {
-      if (visionRef.current) visionObserver.unobserve(visionRef.current);
-      if (whyusRef.current) whyusObserver.unobserve(whyusRef.current);
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains("hgsi-content-vision")) {
+            setVisionVisible(true);
+          } else if (entry.target.classList.contains("hgsi-content-whyus")) {
+            setWhyusVisible(true);
+          }
+        }
+      });
     };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    if (visionRef.current) observer.observe(visionRef.current);
+    if (whyusRef.current) observer.observe(whyusRef.current);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="content">
-      <div className="content-container">
+    <section className="hgsi-content-section">
+      <div className="hgsi-content-container">
+        
+        {/* --- Section 1: Our Vision --- */}
         <div
-          className={`content-vision ${visionVisible ? "visible" : ""}`}
+          className={`hgsi-content-block hgsi-content-vision ${visionVisible ? "in-view" : ""}`}
           ref={visionRef}
           onMouseMove={(e) => handleMouseMove(e, visionRef)}
         >
-          <div className="overlay-vision">
-            <div className={`overlay-vision-c ${visionVisible ? "visible" : ""}`}>
-              <h2>Our Vision</h2>
+          <div className="hgsi-spotlight-overlay"></div>
+          
+          <div className="hgsi-flex-wrapper">
+            <div className="hgsi-glass-card">
+              {/* ✅ UPDATED: Use AnimatedHeading here */}
+              <AnimatedHeading text="Our Vision" />
+              
+              <div className="hgsi-text-content">
+                <p style={{ transitionDelay: '0.2s' }}>
+                  At <strong>HR Governance Solutions India (HGSI)</strong>, our vision is to transform how organizations manage and deliver employee benefits. 
+                  We provide comprehensive, compliant, and technology enabled solutions that drive efficiency.
+                </p>
+                <p style={{ transitionDelay: '0.3s' }}>
+                  As the <strong>India Service Center for Workforce Junction</strong>, we combine global best practices with local operational expertise to deliver seamless, high quality services.
+                </p>
+              </div>
+            </div>
+
+            <div className="hgsi-extra-content side-panel" style={{ transitionDelay: '0.4s' }}>
+              <h4>Operational Excellence</h4>
               <p>
-                At <strong>HR Governance Solutions India (HGSI)</strong>, our vision is to transform how organizations manage and deliver employee benefits. 
-                We provide comprehensive, compliant, and technology-enabled solutions that drive efficiency, engagement, and measurable outcomes.
-              </p>
-              <p>
-                As the <strong>India Service Center for Workforce Junction</strong>, we combine global best practices with local operational expertise to deliver seamless, high-quality services that empower our clients to optimize their workforce and reduce administrative risk.
-              </p>
-              <p>
-                We believe in creating long-term partnerships based on trust, innovation, and a relentless commitment to excellence.
+                We strive to set the industry benchmark for accuracy and speed. By integrating automated workflows with human oversight, we ensure that every payroll cycle is executed with precision.
               </p>
             </div>
           </div>
         </div>
+
+        {/* --- Section 2: Why Choose HGSI --- */}
         <div
-          className={`content-whyus ${whyusVisible ? "visible" : ""}`}
+          className={`hgsi-content-block hgsi-content-whyus ${whyusVisible ? "in-view" : ""}`}
           ref={whyusRef}
           onMouseMove={(e) => handleMouseMove(e, whyusRef)}
         >
-          <div className="overlay-whyus">
-            <div className={`overlay-whyus-c ${whyusVisible ? "visible" : ""}`}>
-              <h2>Why Choose HGSI</h2>
+          <div className="hgsi-spotlight-overlay"></div>
+
+          <div className="hgsi-flex-wrapper reverse">
+            <div className="hgsi-extra-content side-panel" style={{ transitionDelay: '0.4s' }}>
+              <h4>Strategic Impact</h4>
               <p>
-                We are more than a service provider - we are a strategic partner for HR and benefits operations. 
-                By leveraging the Workforce Junction platform, we empower organizations to deliver enterprise-grade benefits with the agility and personalization that small and mid-size companies need.
+                Our commitment goes beyond daily tasks. We analyze workforce data to provide actionable insights. With HGSI, you gain a partner dedicated to <span className="hgsi-highlight">Integrity Always</span>.
               </p>
-              <p>
-                Our team combines expertise, advanced technology, and a relationship-first approach to ensure every client receives tailored, efficient, and scalable solutions. 
-                With HGSI, organizations can minimize administrative burden, optimize workforce performance, and focus on what truly matters: their people.
-              </p>
-              <p>
-                Our core values guide everything we do: <strong>Relationships First</strong>, <strong>Confident Humility</strong>, and <strong>Integrity Always</strong>. 
-                These principles ensure we deliver consistent, high-quality results and build trust with our clients and partners.
-              </p>
+            </div>
+
+            <div className="hgsi-glass-card">
+              {/* ✅ UPDATED: Use AnimatedHeading here */}
+              <AnimatedHeading text="Why Choose HGSI" />
+              
+              <div className="hgsi-text-content">
+                <p style={{ transitionDelay: '0.2s' }}>
+                  We are more than a service provider-we are a strategic partner. 
+                  By leveraging the Workforce Junction platform, we empower organizations to deliver enterprise-grade benefits with agility.
+                </p>
+                <p style={{ transitionDelay: '0.3s' }}>
+                  Our team combines expertise and a relationship-first approach to ensure every client receives tailored, scalable solutions.
+                </p>
+              </div>
             </div>
           </div>
         </div>

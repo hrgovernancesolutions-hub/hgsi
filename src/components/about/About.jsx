@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./About.css";
 import aboutImg from "../../assets/img8.jpg";
-
+import aboutbackimg from "../../assets/contentimage.png"
 function About() {
   const aboutRef = useRef(null);
 
@@ -25,7 +25,21 @@ function About() {
   }, []);
 
   return (
-    <section className="about-section" id="about" aria-label="About HR Governance Solutions India">
+    <section 
+      className="about-section" 
+      id="about" 
+      aria-label="About HR Governance Solutions India"
+      style={{
+        // ✅ PARALLAX BACKGROUND APPLIED HERE
+        // Linear gradient adds a dark overlay so text is readable
+        // backgroundImage: `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url(${aboutbackimg})`,
+        backgroundImage: `url(${aboutbackimg})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed', // This makes it constant on scroll
+      }}
+    >
       <section className="about" ref={aboutRef}>
         <div className="about-container">
           {/* ✅ Left Section */}
@@ -59,7 +73,7 @@ function About() {
             </p>
           </div>
 
-          {/* ✅ Right Section - Updated */}
+          {/* ✅ Right Section */}
           <div className="about-right">
             <div className="image-wrapper">
               <img src={aboutImg} alt="HGSI India Service Center" className="about-image" />
