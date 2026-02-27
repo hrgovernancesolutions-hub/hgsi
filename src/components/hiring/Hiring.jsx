@@ -25,7 +25,7 @@ function Hiring() {
     <section className="hiring" ref={hiringRef}>
       <div className={`hiring-container ${visible ? "visible" : ""}`}>
         <h2>
-          <span className="highlight">Join Our Team</span>
+          <span className="hiring-highlight">Join Our Team</span>
         </h2>
 
         <p className="intro-text">
@@ -42,7 +42,7 @@ function Hiring() {
               href="https://workforcejunction.com/"
               target="_blank"
               rel="noreferrer"
-              className="wj-link"
+              className="hiring-wj-link"
             >
               India Service Center for Workforce Junction
             </a>.

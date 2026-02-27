@@ -2,7 +2,7 @@
   background: #ffffff;
   position: relative;
   height: auto;
-   background-image: url("../../assets/hero1.jpg");
+  background-image: url("../../assets/hero1.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -28,7 +28,7 @@
   transform: translateY(0);
 }
 
-.highlight {
+.hiring-highlight {
   color: #00e1ff;
   position: relative;
 }
@@ -72,14 +72,14 @@
   margin-bottom: 10px;
 }
 
-.wj-link {
+.hiring-wj-link {
   color: #00e1ff;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.wj-link:hover {
+.hiring-wj-link:hover {
   color: #00e1ff;
 }
 
@@ -122,10 +122,9 @@
 }
 
 @media (max-width: 768px) {
-  
-.hiring-container {
-  padding: 30px;
-}
+  .hiring-container {
+    padding: 30px;
+  }
   .hiring {
     padding: 0;
   }
@@ -141,5 +140,15 @@
 
   .intro-text {
     font-size: 1rem;
+  }
+}
+
+/* --- IPHONE & MOBILE SCROLL FIX --- */
+/* This specifically targets mobile screens and disables the buggy 'fixed' behavior */
+@media screen and (max-width: 1024px) {
+  .hiring {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
   }
 }
