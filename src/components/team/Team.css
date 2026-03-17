@@ -1,198 +1,350 @@
-/* --- Section Base --- */
-.team {
-  background-color: #050a18; /* Deep Dark Background */
-  padding: 60px 20px;
-  text-align: center;
+/* =======================================================
+   ✨ BASE SECTION
+======================================================== */
+.team-accordion-section {
   position: relative;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 calc(-50vw + 50%); /* Full edge-to-edge */
+  padding: 100px 5%;
+  background: #f4f7f9; /* Crisp tech light gray */
   overflow: hidden;
+  z-index: 1;
 }
 
-/* --- Heading --- */
-.team-heading {
-  margin-bottom: 40px;
+/* --- HEADER --- */
+.ta-header {
+  text-align: center;
+  margin-bottom: 60px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.team-heading.visible {
+.team-accordion-section.visible .ta-header {
   opacity: 1;
   transform: translateY(0);
 }
 
-.team-heading h2 {
-  font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.ta-badge {
   display: inline-block;
-  cursor: default;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #0099ff; /* Electric blue */
+  margin-bottom: 15px;
 }
 
-.team-heading p {
-  color: #a0a0a0;
-  font-size: 0.95rem;
+.ta-subtitle {
+  color: #555555;
+  font-size: 1.15rem;
   max-width: 600px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* --- Letter Animation (Rubber Band) --- */
-.team-hover-char {
+/* =======================================================
+   ✨ HGSI MASSIVE HEADING & RUBBERBAND
+======================================================== */
+.hgsi-massive-heading {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: #013861; /* Navy Blue */
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.hgsi-hover-char {
   display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpReveal 0.6s forwards; /* Initial load animation */
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.team-hover-char:hover {
-  color: #00e1ff; /* Turns Cyan on hover */
-  animation: teamRubberBand 1s both;
+@keyframes fadeUpReveal {
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes teamRubberBand {
-  0% { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-  100% { transform: scale3d(1, 1, 1); }
+.hgsi-hover-char:hover {
+  color: #0099ff; 
+  opacity: 1; 
+  animation: rubberBand 1s both; 
 }
 
-/* --- Container (One Line Layout) --- */
-.team-container {
+@keyframes rubberBand {
+  0% { transform: scale3d(1, 1, 1); opacity: 1; }
+  30% { transform: scale3d(1.25, 0.75, 1); opacity: 1; }
+  40% { transform: scale3d(0.75, 1.25, 1); opacity: 1; }
+  50% { transform: scale3d(1.15, 0.85, 1); opacity: 1; }
+  65% { transform: scale3d(0.95, 1.05, 1); opacity: 1; }
+  75% { transform: scale3d(1.05, 0.95, 1); opacity: 1; }
+  100% { transform: scale3d(1, 1, 1); opacity: 1; }
+}
+
+/* =======================================================
+   ✨ THE KINETIC ACCORDION (0 Gap, Edge-to-Edge)
+======================================================== */
+.ta-container {
   display: flex;
-  flex-wrap: wrap; 
-  justify-content: center;
-  gap: 15px; /* Small gap to fit more cards */
-  max-width: 1300px;
+  width: 100%;
+  height: 65vh; /* Massive cinematic height */
+  max-height: 700px;
+  min-height: 500px;
+  
+  gap: 0px; 
+  
+  max-width: 1400px;
   margin: 0 auto;
-}
-
-/* --- Card Base --- */
-.team-card {
-  position: relative;
-  width: 160px; /* ✅ SMALLER WIDTH to fit one line */
-  background: linear-gradient(145deg, rgba(20, 30, 48, 0.9), rgba(10, 20, 35, 0.95)); /* Dark Blue Card Color */
-  border: 1px solid rgba(0, 225, 255, 0.1);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 50px rgba(1, 56, 97, 0.2);
   
-  /* Initial Animation State */
   opacity: 0;
-  transform: translateY(30px) scale(0.9);
-  transition: 
-    opacity 0.6s ease,
-    transform 0.4s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s;
 }
 
-/* Visible State */
-.team-card.visible {
+.team-accordion-section.visible .ta-container {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* Hover Effects */
-.team-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: #00e1ff; 
-  box-shadow: 0 10px 30px rgba(0, 225, 255, 0.2); 
-  z-index: 2;
-}
-
-/* --- Image Styling --- */
-.team-img {
+/* --- INDIVIDUAL PANELS --- */
+.ta-panel {
   position: relative;
-  width: 100%;
-  height: 180px; /* ✅ Adjusted height for compactness */
+  flex: 1; 
+  border-radius: 0px; 
   overflow: hidden;
-  background-color: #e0e0e0; /* Fallback color */
+  cursor: pointer;
+  background: #013861;
+  transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.7s ease;
 }
 
-.team-img img {
-  width: 100%;
-  height: 100%;
-  
-  /* ✅ THIS FIXES THE "NOT FULL FITTED" ISSUE */
-  object-fit: cover;        /* Forces image to cover the box without stretching */
-  object-position: top center; /* Focuses on faces (top) instead of center body */
-  
-  /* ✅ COLOR ALWAYS (No Grayscale) */
-  filter: none; 
-  transition: transform 0.5s ease;
+.ta-panel:not(:last-child) {
+  border-right: 1px solid rgba(1, 56, 97, 0.8);
 }
 
-/* On Hover: Zoom Image */
-.team-card:hover .team-img img {
-  transform: scale(1.1);
+/* ACTIVE/EXPANDED STATE */
+.ta-panel.active {
+  flex: 10;
+  border-radius: 0px; 
+  z-index: 10; 
+  box-shadow: 0 0 40px rgba(1, 56, 97, 0.6);
+  cursor: default;
+  border-right: none;
 }
 
-/* Shine Effect */
-.img-glow {
+/* --- THE IMAGE --- */
+.ta-panel-img {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-  transform: skewX(-25deg);
-  transition: 0.5s;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  
+  object-fit: cover;
+  object-position: center top; 
+  
+  filter: grayscale(100%) brightness(0.6);
+  transform: scale(1);
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Expanded State: Full Color & Uncropped */
+.ta-panel.active .ta-panel-img {
+  filter: grayscale(0%) brightness(1);
+  object-fit: contain; 
+  object-position: right bottom; 
+}
+
+/* --- OVERLAYS --- */
+.ta-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(1, 56, 97, 0.9) 0%, rgba(1, 56, 97, 0.2) 50%, transparent 100%);
+  opacity: 0.8;
+  transition: opacity 0.7s ease;
+}
+
+.ta-panel.active .ta-panel-overlay {
+  opacity: 1; 
+  background: linear-gradient(to top, rgba(1, 56, 97, 0.95) 0%, rgba(1, 56, 97, 0) 50%);
+}
+
+/* =======================================================
+   ✨ TEXT STYLING: COMPRESSED VS EXPANDED
+======================================================== */
+.ta-vertical-title {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  height: 60%;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.ta-vertical-title span {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg); 
+}
+
+.ta-panel.active .ta-vertical-title {
+  opacity: 0;
   pointer-events: none;
 }
 
-.team-card:hover .img-glow {
-  left: 150%;
-  transition: 0.7s;
+.ta-expanded-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease 0.3s;
 }
 
-/* --- Text Info --- */
-.team-info {
-  padding: 12px 5px;
-  background: transparent;
+.ta-panel.active .ta-expanded-content {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.team-info h3 {
-  font-size: 0.85rem;
-  color: #fff;
-  font-weight: 600;
-  margin-bottom: 3px;
-  white-space: nowrap; /* Prevents name wrapping if possible */
-  overflow: hidden;
-  text-overflow: ellipsis;
+.ta-hologram-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 1;
+  mask-image: linear-gradient(to top, black 0%, transparent 50%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 50%);
 }
 
-.team-card:hover .team-info h3 {
-  color: #00e1ff;
+.ta-id-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.08);
+  line-height: 1;
+  z-index: 1;
 }
 
-.team-info p {
-  font-size: 0.65rem;
-  color: #bbb;
-  margin: 0;
+.ta-info-box {
+  position: relative;
+  z-index: 2;
+  transform: translateY(20px);
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+}
+
+.ta-panel.active .ta-info-box {
+  transform: translateY(0);
+}
+
+.ta-tech-line {
+  width: 50px;
+  height: 4px;
+  background: #0099ff; 
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0, 153, 255, 0.5);
+}
+
+.ta-info-box h3 {
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  line-height: 1.1;
 }
 
-/* --- Responsive --- */
+.ta-info-box h4 {
+  font-size: 1.25rem;
+  color: #0099ff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* =======================================================
+   ✨ MOBILE RESPONSIVENESS (SMALLER CARDS, FULL IMAGE)
+======================================================== */
+@media (max-width: 1024px) {
+  .ta-container { height: 50vh; }
+  .ta-panel.active { flex: 6; }
+}
+
 @media (max-width: 768px) {
-  .team-card {
-    width: 140px; /* Even smaller for tablets */
+  .team-accordion-section {
+    padding: 60px 20px;
   }
-  .team-img {
-    height: 160px;
-  }
-}
 
-@media (max-width: 480px) {
-  .team-container {
-    gap: 10px;
+  .ta-container {
+    flex-direction: column;
+    height: auto; 
+    max-height: none;
+    min-height: auto;
+    gap: 20px; /* Spacing between stacked cards */
+    box-shadow: none; 
   }
-  .team-card {
-    width: 45%; /* 2 per row on mobile */
+
+  /* ✅ FIX: Cards are now much shorter (300px) so they don't take up the whole screen */
+  .ta-panel, .ta-panel.active {
+    flex: none;
+    width: 100%;
+    height: 300px; 
+    border-radius: 0px; 
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(1, 56, 97, 0.2);
+    cursor: default;
   }
-  .team-heading h2 {
-    font-size: 1.8rem;
+
+  /* ✅ Images retain 100% width/height of the new 300px container and stay uncropped */
+  .ta-panel .ta-panel-img,
+  .ta-panel.active .ta-panel-img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1);
+    object-fit: contain; 
+    object-position: right bottom; 
   }
+
+  .ta-panel .ta-panel-overlay,
+  .ta-panel.active .ta-panel-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(1, 56, 97, 0.95) 0%, rgba(1, 56, 97, 0) 80%);
+  }
+
+  .ta-vertical-title {
+    display: none !important;
+  }
+
+  .ta-panel .ta-expanded-content,
+  .ta-panel.active .ta-expanded-content {
+    opacity: 1;
+    pointer-events: auto;
+    padding: 20px 15px; /* Reduced padding for the smaller mobile card */
+  }
+
+  .ta-panel .ta-info-box,
+  .ta-panel.active .ta-info-box {
+    transform: translateY(0);
+  }
+
+  /* ✅ Mobile Typography properly scaled down for the new smaller card height */
+  .ta-info-box h3 { font-size: 1.8rem; margin-bottom: 2px; }
+  .ta-info-box h4 { font-size: 0.9rem; }
+  .ta-tech-line { margin-bottom: 10px; }
+  .ta-id-badge { font-size: 3rem; bottom: 10px; right: 10px; }
 }

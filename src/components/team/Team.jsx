@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Team.css';
 
 // Import Images
@@ -10,12 +10,12 @@ import RajkumarImg from '../../assets/TeamMembers/rajkumarfinal.png';
 import VeluImg from '../../assets/TeamMembers/velufinal.jpg';
 import SumaImg from '../../assets/TeamMembers/sumafinal.png';
 
-// Helper for Letter Animation
+// ✅ Updated Heading Component exactly as requested
 const AnimatedHeading = ({ text }) => {
   return (
-    <h2>
+    <h2 className="hgsi-massive-heading">
       {text.split("").map((char, index) => (
-        <span key={index} className="team-hover-char">
+        <span key={index} className="hgsi-hover-char" style={{ animationDelay: `${index * 0.05}s` }}>
           {char === " " ? "\u00A0" : char}
         </span>
       ))}
@@ -25,15 +25,16 @@ const AnimatedHeading = ({ text }) => {
 
 function Team() {
   const teamRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0); // Auto-expand the first member by default
 
   const teamMembers = [
-    { name: 'Johnsey Joseph', role: 'Managing Director', img: HeadBackofficeServices },
-    { name: 'Dilip Kumar', role: 'Head of Operations', img: LeadProductManagement },
-    { name: 'Shilpa Paritala', role: 'Operations Manager', img: LeadImplementationandOnboarding },
-    { name: 'Suma Hegde', role: 'Human Resources', img: SumaImg },
-    { name: 'Muniraju GJ', role: 'Senior Team Lead', img: MunirajuImg },
-    { name: 'Raj Kumar C R', role: 'Team Lead', img: RajkumarImg },
-    { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg },
+    { name: 'Johnsey Joseph', role: 'Managing Director', img: HeadBackofficeServices, id: '01' },
+    { name: 'Dilip Kumar', role: 'Head of Operations', img: LeadProductManagement, id: '02' },
+    { name: 'Shilpa Paritala', role: 'Operations Manager', img: LeadImplementationandOnboarding, id: '03' },
+    { name: 'Suma Hegde', role: 'Human Resources', img: SumaImg, id: '04' },
+    { name: 'Muniraju GJ', role: 'Senior Team Lead', img: MunirajuImg, id: '05' },
+    { name: 'Raj Kumar C R', role: 'Team Lead', img: RajkumarImg, id: '06' },
+    { name: 'Gnanavelu R', role: 'Assistant Team Lead', img: VeluImg, id: '07' },
   ];
 
   useEffect(() => {
@@ -42,44 +43,60 @@ function Team() {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
 
-    const elements = teamRef.current.querySelectorAll('.team-card, .team-heading');
-    elements.forEach(el => observer.observe(el));
-
+    if (teamRef.current) observer.observe(teamRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="team" ref={teamRef}>
-      <div className="team-heading">
-        <AnimatedHeading text="Meet Our Team" />
-        <p>The innovators and leaders driving excellence at HGSI.</p>
+    <section className="team-accordion-section" ref={teamRef}>
+      
+      <div className="ta-header">
+        <div className="ta-badge">HGSI LEADERSHIP</div>
+        <AnimatedHeading text="Meet The Core" />
+        <p className="ta-subtitle">The innovators and operational leaders driving excellence, compliance, and global scale.</p>
       </div>
 
-      <div className="team-container">
+      {/* THE KINETIC ACCORDION */}
+      <div className="ta-container">
         {teamMembers.map((member, index) => (
           <div 
-            className="team-card" 
             key={index}
-            style={{ transitionDelay: `${index * 0.1}s` }} // Staggered entry
+            className={`ta-panel ${activeIndex === index ? 'active' : ''}`}
+            onMouseEnter={() => setActiveIndex(index)}
+            onClick={() => setActiveIndex(index)}
           >
-            <div className="team-img">
-              <img src={member.img} alt={member.name} />
-              <div className="img-glow"></div>
+            {/* Background Image */}
+            <img src={member.img} alt={member.name} className="ta-panel-img" />
+            
+            {/* Navy Overlay (darkens non-active panels) */}
+            <div className="ta-panel-overlay"></div>
+
+            {/* DEFAULT VIEW: Vertical Text (Visible when compressed) */}
+            <div className="ta-vertical-title">
+              <span>{member.name}</span>
             </div>
-            <div className="team-info">
-              <h3>{member.name}</h3>
-              <p>{member.role}</p>
+
+            {/* EXPANDED VIEW: Sliding Tech Info (Visible when active) */}
+            <div className="ta-expanded-content">
+              <div className="ta-hologram-grid"></div> {/* Tech grid effect inside the card */}
+              <div className="ta-id-badge">{member.id}</div>
+              <div className="ta-info-box">
+                <div className="ta-tech-line"></div>
+                <h3>{member.name}</h3>
+                <h4>{member.role}</h4>
+              </div>
             </div>
+
           </div>
         ))}
       </div>
+
     </section>
   );
 }

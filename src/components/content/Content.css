@@ -1,223 +1,224 @@
 /* --- Base Layout --- */
-.hgsi-content-section {
-  width: 100%;
+.hgsi-tech-section {
   position: relative;
+  /* Forces the section to break out of any container and span 100% of the screen width */
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 calc(-50vw + 50%);
+  padding: 0; 
+  background: #f8fafc; /* Crisp, ultra-light tech gray */
   overflow: hidden;
-  /* Note: Background image is removed from here and moved to .hgsi-fixed-bg */
-}
-
-/* --- ✅ TRUE PARALLAX FIXED BACKGROUND --- */
-.hgsi-fixed-bg {
-  position: fixed; /* Key for iOS Parallax */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1; /* Puts it behind everything */
-  
-  /* Apply your image and gradients here */
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9)),
-    linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9)),
-    url("../../assets/heroimagelates.png");
-    
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  /* Performance booster for mobile */
-  will-change: transform; 
-}
-
-.hgsi-content-container {
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  gap: 30px;
-}
-
-/* --- Content Blocks --- */
-.hgsi-content-block {
-  position: relative;
-  min-height: auto; 
-  width: 100%;
-  display: flex;
-  align-items: center; 
-  padding: 0 60px; 
-  box-sizing: border-box;
-}
-
-.hgsi-content-vision { 
-  justify-content: flex-start;
-  padding-top: 100px;
-  padding-bottom: 30px; 
-}
-
-.hgsi-content-whyus { 
-  justify-content: flex-end; 
-  padding-top: 30px;
-  padding-bottom: 100px; 
-}
-
-/* --- Spotlight Overlay --- */
-.hgsi-spotlight-overlay {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none;
-  background: radial-gradient(circle 400px at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.08), transparent 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
   z-index: 1;
 }
-.hgsi-content-block:hover .hgsi-spotlight-overlay { opacity: 1; }
 
-/* --- Flex Layout Wrapper --- */
-.hgsi-flex-wrapper {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1100px;
-  width: 100%;
-  z-index: 2;
-  position: relative;
-}
-
-/* --- Main Glass Card --- */
-.hgsi-glass-card {
-  flex: 2; 
-  padding: 35px;
-  background: rgba(20, 30, 48, 0.6); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #00e1ff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+/* =======================================================
+   ✨ INTERACTIVE X-RAY GRID (Follows your mouse globally)
+======================================================== */
+.hgsi-global-spotlight {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
   
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* The Blueprint Dots */
+  background-image: radial-gradient(rgba(1, 56, 97, 0.25) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: center;
+  
+  /* The Mask that hides the grid until the mouse hovers over it */
+  -webkit-mask-image: radial-gradient(circle 350px at var(--x, -1000px) var(--y, -1000px), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 350px at var(--x, -1000px) var(--y, -1000px), black 0%, transparent 100%);
+  
+  pointer-events: none;
+  transition: -webkit-mask-image 0.1s ease-out;
+  z-index: 0; /* Sits at the very back */
 }
 
-.hgsi-content-block.in-view .hgsi-glass-card {
-  opacity: 1;
-  transform: translateY(0);
+/* =======================================================
+   ✨ EDGE-TO-EDGE 4-QUADRANT GRID
+======================================================== */
+.hgsi-quadrant-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Perfect 50/50 split */
+  grid-template-rows: auto auto;
+  width: 100%;
+  gap: 0; /* Zero gaps, perfectly flush */
+  position: relative;
+  border-top: 1px solid rgba(1, 56, 97, 0.1);
+  border-bottom: 1px solid rgba(1, 56, 97, 0.1);
 }
 
-/* --- Extra Content (Side Panel) --- */
-.hgsi-extra-content {
-  flex: 1; 
-  padding: 30px;
-  background: rgba(16, 18, 19, 0.262); 
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 225, 255, 0.2);
-  border-radius: 8px;
+/* --- THE COOL LASER ANIMATIONS (Dividing the grid) --- */
+.hgsi-laser-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(1, 56, 97, 0.1);
+  z-index: 5;
+}
+
+/* The actual moving light beam on the horizontal line */
+.hgsi-laser-horizontal::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -200px; width: 200px; height: 100%;
+  background: linear-gradient(90deg, transparent, #013861, transparent);
+  animation: laserSweepX 6s linear infinite;
+  box-shadow: 0 0 10px rgba(1, 56, 97, 0.5);
+}
+
+.hgsi-laser-vertical {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: rgba(1, 56, 97, 0.1);
+  z-index: 5;
+}
+
+/* The actual moving light beam on the vertical line */
+.hgsi-laser-vertical::after {
+  content: '';
+  position: absolute;
+  top: -200px; left: 0; width: 100%; height: 200px;
+  background: linear-gradient(180deg, transparent, #013861, transparent);
+  animation: laserSweepY 8s linear infinite 1s; /* Slight delay so they don't sync boringly */
+  box-shadow: 0 0 10px rgba(1, 56, 97, 0.5);
+}
+
+@keyframes laserSweepX {
+  0% { left: -10%; }
+  100% { left: 110%; }
+}
+@keyframes laserSweepY {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* =======================================================
+   ✨ INDIVIDUAL CELLS (The 1-2, 1-2 blocks)
+======================================================== */
+.hgsi-quad-cell {
+  position: relative;
+  padding: 8vw 10vw; /* Responsive padding keeps text looking great on huge monitors */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  opacity: 0;
-  transform: translateX(20px);
-  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: rgba(255, 255, 255, 0.8); /* Solid white base */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.4s ease;
+  z-index: 2;
 }
 
-.hgsi-flex-wrapper.reverse .hgsi-extra-content {
-  transform: translateX(-20px);
+/* The "Glassy" alternate cells */
+.hgsi-quad-cell.hgsi-glass-quad {
+  background: rgba(240, 244, 248, 0.5); /* Slightly transparent gray/blue to let the grid show through */
 }
 
-.hgsi-content-block.in-view .hgsi-extra-content {
-  opacity: 1;
-  transform: translateX(0);
+/* Hover effect on individual quadrants */
+.hgsi-quad-cell:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+.hgsi-quad-cell.hgsi-glass-quad:hover {
+  background: rgba(240, 244, 248, 0.8);
 }
 
-/* --- TYPOGRAPHY & LETTER HOVER ANIMATION --- */
-.hgsi-glass-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #fff;
+.hgsi-quad-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* =======================================================
+   ✨ DOPE TYPOGRAPHY & DETAILS
+======================================================== */
+
+/* Huge watermark numbers for that editorial/tech look */
+.hgsi-quad-number {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #0099ff; /* Bright blue accent */
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hgsi-quad-number::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-left: 15px;
+  width: 50px;
+  height: 2px;
+  background: #0099ff;
+}
+
+.hgsi-massive-heading {
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Scales dynamically with screen size */
+  margin-bottom: 30px;
+  color: #013861; 
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: -1px; /* Tighter letter spacing looks more premium */
+  font-weight: 900;
   cursor: default;
+  line-height: 1.1;
 }
 
 .hgsi-hover-char {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
 }
 
 .hgsi-hover-char:hover {
-  animation: rubberBand 1s both;
+  transform: translateY(-10px) scale(1.1);
+  color: #0099ff; 
+  text-shadow: 0 10px 20px rgba(0, 153, 255, 0.3);
 }
 
-@keyframes rubberBand {
-  0% { transform: scale3d(1, 1, 1); }
-  30% { transform: scale3d(1.25, 0.75, 1); }
-  40% { transform: scale3d(0.75, 1.25, 1); }
-  50% { transform: scale3d(1.15, 0.85, 1); }
-  65% { transform: scale3d(0.95, 1.05, 1); }
-  75% { transform: scale3d(1.05, 0.95, 1); }
-  100% { transform: scale3d(1, 1, 1); }
+.hgsi-quad-content p {
+  color: #444444; 
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 90%;
 }
 
-.hgsi-text-content p {
-  color: #e0e0e0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
+.hgsi-quad-content p strong {
+  color: #013861;
 }
 
-.hgsi-extra-content h4 {
-  color: #00e1ff;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+.hgsi-sub-heading {
+  color: #013861; 
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 1px solid rgba(0, 225, 255, 0.3);
-  padding-bottom: 8px;
-  display: inline-block;
-}
-
-.hgsi-extra-content p {
-  color: white;
-  font-size: 0.9rem;
-  line-height: 1.5;
 }
 
 .hgsi-highlight {
-  color: #00e1ff;
-  font-weight: 600;
+  color: #013861; 
+  font-weight: 800;
+  border-bottom: 2px solid #0099ff; /* Tech underline */
 }
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 900px) {
-  .hgsi-flex-wrapper {
-    flex-direction: column;
-    align-items: center;
+  .hgsi-quadrant-grid {
+    grid-template-columns: 1fr; /* Stacks vertically on phones */
   }
   
-  .hgsi-flex-wrapper.reverse {
-    flex-direction: column-reverse; 
-  }
-
-  .hgsi-glass-card, 
-  .hgsi-extra-content {
-    flex: auto;
-    width: 100%;
-    transform: translateY(20px); 
+  .hgsi-laser-vertical {
+    display: none; /* Hide vertical laser on mobile */
   }
   
-  .hgsi-content-block {
-    padding: 20px;
+  .hgsi-quad-cell {
+    padding: 60px 30px;
+    border-bottom: 1px solid rgba(1, 56, 97, 0.1); /* Adds border between stacked items */
   }
   
-  .hgsi-content-vision {
-    padding-top: 60px;
-    padding-bottom: 0;
-  }
-  
-  .hgsi-content-whyus {
-    padding-top: 0;
-    padding-bottom: 60px;
+  .hgsi-quad-content p {
+    max-width: 100%;
   }
 }

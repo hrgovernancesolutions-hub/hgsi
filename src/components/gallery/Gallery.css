@@ -1,159 +1,217 @@
-.gallery-page {
-  padding: 0;
-  margin: 0;
+/* --- ROOT & THEME --- */
+.gl-page-root {
+  background-color: #f4f7f9; /* Clean Gray-White */
+  padding: 100px 5% 80px;
   margin-top: 70px;
+  overflow-x: hidden;
 }
 
-/* Masonry Grid */
-.gallery-grid {
-  column-count: 5;
-  column-gap: 0;
-  row-gap: 5px;
-  width: 100%;
-  padding: 20px;
+/* =======================================================
+   ✨ LEFT-ALIGNED CATCHY HEADER
+======================================================== */
+.gl-header-left {
+  max-width: 600px;
+  margin-bottom: 60px;
+  text-align: left;
 }
 
-.gallery-photo {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0;
-  padding: 0;
-  object-fit: cover;
-  break-inside: avoid;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+.gl-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #0099ff; /* Electric Blue */
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.gallery-photo:hover {
-  transform: scale(1.08);
-  filter: brightness(0.85);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+.gl-title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 0.9;
+  color: #013861; /* Navy Blue */
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  letter-spacing: -2px;
 }
 
-/* Fade-in stagger animation */
-.fade-in-stagger {
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
+.gl-subtitle {
+  font-size: 1.1rem;
+  color: #555555;
+  line-height: 1.6;
+  max-width: 450px;
+  border-left: 3px solid #0099ff;
+  padding-left: 20px;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+/* =======================================================
+   ✨ KINETIC BENTO GRID (Variable Spans)
+======================================================== */
+.gl-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 280px;
+  gap: 30px;
+  max-width: 1400px;
 }
 
-/* Popup */
-.popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  animation: fadeIn 0.3s ease;
-}
+/* Bento Span Logic */
+.gl-span-1 { grid-column: span 2; grid-row: span 2; }
+.gl-span-2 { grid-column: span 1; grid-row: span 2; }
+.gl-span-3 { grid-column: span 1; grid-row: span 1; }
+.gl-span-4 { grid-column: span 2; grid-row: span 1; }
+.gl-span-5 { grid-column: span 1; grid-row: span 1; }
+.gl-span-6 { grid-column: span 1; grid-row: span 1; }
 
-.popup-content {
+.gl-bento-item {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  animation: zoomIn 0.3s ease;
-}
-
-.popup-image {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 8px;
-  display: block;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-}
-
-/* Popup Animations */
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* Controls */
-.close-btn {
-  position: absolute;
-  top: -60px;
-  right: 0;
-  background: transparent;
-  border: none;
   cursor: pointer;
-  color: white;
-  padding: 8px;
-}
-
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.15);
-  border: none;
-  padding: 18px;
-  border-radius: 50%;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
-  color: white;
-}
-
-.nav-btn:hover {
-  background: rgba(255,255,255,0.35);
-  transform: translateY(-50%) scale(1.15);
-}
-
-.nav-btn.left { left: -100px; }
-.nav-btn.right { right: -100px; }
-
-/* Bottom Content Section */
-.gallery-content-section {
-  width: 90%;
-  max-width: 900px;
-  margin: 60px auto 80px;
-  text-align: center;
   opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.9s ease;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.gallery-content-section.reveal {
+.gl-bento-item.gl-reveal {
   opacity: 1;
   transform: translateY(0);
 }
 
-.gallery-content-section h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  font-weight: 700;
-  color: #0099ff;
+.gl-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
-.gallery-content-section p {
-  font-size: 1.05rem;
-  color: #444;
-  line-height: 1.6;
+.gl-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 3;
+  /* 0 Border Radius for that Brutalist developer feel */
+  border-radius: 0px; 
+  background: #013861;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .gallery-grid { column-count: 2; }
-  .nav-btn.left { left: -40px; }
-  .nav-btn.right { right: -40px; }
+.gl-actual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease, filter 0.4s ease;
+}
+
+/* --- THE BRUTALIST SHADOW --- */
+.gl-brutal-shadow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #013861; /* Navy Shadow */
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* =======================================================
+   ✨ HOVER ANIMATIONS
+======================================================== */
+.gl-bento-item:hover .gl-img-wrapper {
+  transform: translate(-10px, -10px); /* Lifts up and left */
+}
+
+.gl-bento-item:hover .gl-brutal-shadow {
+  transform: translate(10px, 10px); /* Shadow stays but feels offset */
+  background: #0099ff; /* Shadow turns Electric Blue on hover */
+}
+
+.gl-bento-item:hover .gl-actual-img {
+  transform: scale(1.1);
+  filter: grayscale(100%) brightness(0.7); /* Cool developer aesthetic */
+}
+
+/* Meta Data on Hover */
+.gl-hover-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gl-bento-item:hover .gl-hover-overlay {
+  opacity: 1;
+}
+
+.gl-icon { color: #0099ff; margin-bottom: 10px; }
+.gl-meta { color: #ffffff; font-weight: 800; letter-spacing: 2px; font-size: 0.8rem; }
+
+/* =======================================================
+   ✨ POPUP (ULTRA CLEAN)
+======================================================== */
+.gl-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(1, 56, 97, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 3000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+.gl-popup-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 85vh;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  animation: gl-zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.gl-enlarged-img {
+  max-width: 100%;
+  max-height: 85vh;
+  display: block;
+}
+
+.gl-close-btn {
+  position: absolute;
+  top: 30px; right: 30px;
+  color: white; background: none; border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gl-close-btn:hover { transform: rotate(90deg); color: #0099ff; }
+
+.gl-nav-btn {
+  position: absolute;
+  color: white; background: none; border: none;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.gl-nav-btn:hover { opacity: 1; color: #0099ff; }
+.gl-left { left: 40px; }
+.gl-right { right: 40px; }
+
+@keyframes gl-zoomIn { from { opacity: 0; transform: scale(0.9); } }
+
+/* =======================================================
+   ✨ RESPONSIVE
+======================================================== */
+@media (max-width: 1024px) {
+  .gl-bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .gl-span-1, .gl-span-2, .gl-span-4 { grid-column: span 1; grid-row: span 1; }
 }
 
 @media (max-width: 600px) {
-  .gallery-grid { column-count: 1; }
-
-  .nav-btn {
-    top: 110%;
-    padding: 14px;
-  }
-
-  .nav-btn.left { left: 20px; }
-  .nav-btn.right { right: 20px; }
+  .gl-bento-grid { grid-template-columns: 1fr; grid-auto-rows: 350px; }
+  .gl-title { font-size: 3.5rem; }
+  .gl-nav-btn { display: none; } /* Hide arrows on mobile for simplicity */
 }

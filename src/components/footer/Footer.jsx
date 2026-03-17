@@ -18,7 +18,6 @@ function Footer() {
         <div className="footer-links">
           <h3>Quick Links</h3>
           <ul>
-            {/* ALWAYS force navigation to HOME */}
             <li><HashLink smooth to="/#home">Home</HashLink></li>
             <li><HashLink smooth to="/#about">About</HashLink></li>
             <li><HashLink smooth to="/#team">Team</HashLink></li>

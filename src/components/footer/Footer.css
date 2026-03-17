@@ -1,6 +1,6 @@
 .footer {
-  /* background: linear-gradient(to bottom, #000000, #0a0f24, #1a2a6c); */
-  background-color: white;
+  /* ✅ Background changed to your theme Navy Blue */
+  background-color: #013861; 
   padding: 60px 60px 20px;
 }
 
@@ -9,7 +9,8 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Updated border to be visible against the dark blue */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
   padding-bottom: 40px;
 }
 
@@ -18,13 +19,15 @@
 }
 
 .footer-about h2 {
-  color: #0099ff;
+  /* ✅ Changed to White for contrast */
+  color: #ffffff; 
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
 
 .footer-about p {
-  color: black;
+  /* ✅ Changed to Gray for readability on Navy */
+  color: #d3d3d3; 
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -36,7 +39,8 @@
 .footer-links h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: #0099ff;
+  /* ✅ Changed to White */
+  color: #ffffff; 
 }
 
 .footer-links ul {
@@ -50,12 +54,14 @@
 
 .footer-links a {
   text-decoration: none;
-  color: black;
+  /* ✅ Changed to Gray */
+  color: #d3d3d3; 
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #0099ff;
+  /* ✅ Changed to White on hover */
+  color: #ffffff; 
 }
 
 .footer-contact {
@@ -65,29 +71,34 @@
 .footer-contact h3 {
   font-size: 1.2rem;
   margin-bottom: 15px;
-  color: #0099ff;
+  /* ✅ Changed to White */
+  color: #ffffff; 
 }
 
 .footer-contact p {
-  color: black;
+  /* ✅ Changed to Gray */
+  color: #d3d3d3; 
   font-size: 0.95rem;
   margin-bottom: 0px;
 }
 
 .footer-contact a {
-  color: black;
+  /* ✅ Changed to Gray */
+  color: #d3d3d3; 
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-contact a:hover {
-  color: #0099ff;
+  /* ✅ Changed to White on hover */
+  color: #ffffff; 
 }
 
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
-  color: #aaa;
+  /* Kept as a muted gray */
+  color: rgba(255, 255, 255, 0.5); 
   font-size: 0.9rem;
   letter-spacing: 0.5px;
 }
