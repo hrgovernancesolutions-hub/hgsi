@@ -2,7 +2,6 @@
 .hero {
   position: relative;
   height: 100vh;
-  color: #333333; 
   text-align: center;
   padding: 0 20px;
   display: flex;
@@ -13,91 +12,59 @@
   overflow: hidden; 
 }
 
-/* --- THE COOL ANIMATED GRAY/WHITE BACKGROUND --- */
-.hero-gray-bg {
+/* --- LIGHT BACKGROUND IMAGE --- */
+.hero-image-bg {
   position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1; 
-  background: linear-gradient(-45deg, #ffffff, #f0f4f8, #e2e8f0, #cfd9df);
-  background-size: 400% 400%;
-  animation: smoothWave 12s ease-in-out infinite alternate;
+  /* Assuming your new light image is in the assets folder */
+  background: url('../../assets/herofinal.png') center center / cover no-repeat;
   overflow: hidden;
 }
 
-/* --- LAYER 1: The Faint Base Grid --- */
+/* Removed the dark overlay so the beautiful light gray shines through! */
+
+/* --- LAYER 1: The Faint Base Grid (Subtle White/Gray) --- */
 .hero-grid-base {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(90deg, rgba(1, 56, 97, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(1, 56, 97, 0.04) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.095) 1px, transparent 1px),
+    linear-gradient( rrgba(255, 255, 255, 0.095) 1px, transparent 1px);
   background-size: 40px 40px;
   z-index: 1;
 }
 
-/* --- LAYER 2: The Interactive Navy Spotlight Grid --- */
+/* --- LAYER 2: The Interactive Spotlight Grid (Navy Blue to contrast the light bg!) --- */
 .hero-grid-interactive {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  /* BOLD Navy Blue Grid Lines */
+  
+  /* Bold Navy Blue grid lines revealed by the mouse */
   background-image: 
-    linear-gradient(90deg, rgba(1, 56, 97, 0.7) 1px, transparent 1px),
-    linear-gradient(rgba(1, 56, 97, 0.7) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(1, 56, 97, 0.4) 1px, transparent 2px),
+    linear-gradient(rgba(1, 56, 97, 0.4) 1px, transparent 2px);
   background-size: 40px 40px;
   z-index: 2;
   
-  /* The Magic: Masks the bold grid so it ONLY appears near the cursor */
-  /* Starts way off screen (-1000px) before the user moves their mouse */
   -webkit-mask-image: radial-gradient(circle 250px at var(--x, -1000px) var(--y, -1000px), black 0%, transparent 100%);
   mask-image: radial-gradient(circle 250px at var(--x, -1000px) var(--y, -1000px), black 0%, transparent 100%);
   
-  /* Smooth trail effect */
   transition: -webkit-mask-image 0.1s ease-out, mask-image 0.1s ease-out;
-}
-
-/* The Slow-Rotating Glare/Light Sweep */
-.hero-gray-bg::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%; width: 200%; height: 200%;
-  background: conic-gradient(
-    from 180deg at 50% 50%, 
-    transparent 0deg, 
-    rgba(255, 255, 255, 0.9) 90deg, 
-    transparent 180deg
-  );
-  animation: slowSpin 25s linear infinite;
-  opacity: 0.6;
-  z-index: 0; /* Behind the grids */
 }
 
 .hero-content {
   max-width: 900px;
   z-index: 3; 
   position: relative;
-  /* Stops the text from interfering with the mouse hover on the background */
   pointer-events: none; 
 }
 
-/* Re-enable clicking on the button and links! */
 .hero-content a {
   pointer-events: auto;
-}
-
-/* --- BACKGROUND KEYFRAMES --- */
-
-@keyframes smoothWave {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes slowSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* --- TEXT ANIMATIONS --- */
@@ -105,13 +72,14 @@
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 20px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 1px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /* REVERSED: Back to Navy Blue for the light background */
   color: #013861;
-  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8); 
+  text-shadow: 0 4px 15px rgba(255, 255, 255, 0.382); /* Soft white glow to make it readable over the room's shadows */
 }
 
 .hero h1 .char {
@@ -128,6 +96,7 @@
 
 .hero p {
   font-size: 1.25rem;
+  /* REVERSED: Dark Gray for readability */
   color: #333333 !important; 
   line-height: 1.7;
   margin-bottom: 40px;
@@ -136,7 +105,7 @@
   animation: floatUp 1s ease-out forwards;
   animation-delay: 1.5s; 
   font-weight: 500;
-  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.316);
 }
 
 .btn-wrapper {
@@ -171,14 +140,16 @@
 /* --- ELEMENT STYLES --- */
 
 .highlight {
+  /* REVERSED: Navy Blue */
   color: #013861 !important; 
   font-weight: 800;
 }
 
 .wj-link {
+  /* REVERSED: Navy Blue */
   color: #013861 !important; 
   text-decoration: none;
-  font-weight: 800;
+  font-weight: 700;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -190,7 +161,7 @@
   height: 2px;
   bottom: -2px;
   left: 0;
-  background-color: #013861; 
+  background-color: white; /* Electric Blue hover line */
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
@@ -202,21 +173,21 @@
 }
 
 .wj-link:hover {
-  color: #005691;
+  color: white !important;
 }
 
-/* BUTTON STYLES - Sharp Corners */
+/* BUTTON STYLES - REVERSED FOR LIGHT BACKGROUND */
 .cta-btn {
   display: inline-block;
   padding: 16px 45px;
-  border: 2px solid #013861; 
+  border: 2px solid #013861; /* Navy Border */
   border-radius: 0px; 
-  color: #013861; 
+  color: #013861; /* Navy Text */
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: rgba(255, 255, 255, 0.6); 
+  background: rgba(255, 255, 255, 0.6); /* Slightly frosted background */
   backdrop-filter: blur(5px);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
@@ -233,7 +204,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(1, 56, 97, 0.10), 
+    rgba(1, 56, 97, 0.15), 
     transparent
   );
   transition: all 0.6s;
@@ -244,9 +215,9 @@
 }
 
 .cta-btn:hover {
-  background: #013861; 
-  color: #ffffff; 
-  box-shadow: 0 6px 20px rgba(1, 56, 97, 0.3); 
+  background: #013861; /* Fills with Navy */
+  color: #ffffff; /* Text turns White */
+  box-shadow: 0 10px 30px rgba(1, 56, 97, 0.3); 
   transform: translateY(-5px);
 }
 
@@ -254,6 +225,7 @@
   .hero {
     padding: 80px 20px;
     justify-content: flex-end;
+    height: 80vh;
   }
 
   .hero h1 {
@@ -267,7 +239,7 @@
 
   .hero p {
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .cta-btn {

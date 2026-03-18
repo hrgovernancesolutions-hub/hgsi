@@ -155,8 +155,8 @@
 }
 
 .hgsi-massive-heading {
-  font-size: clamp(2.5rem, 4vw, 4rem); /* Scales dynamically with screen size */
-  margin-bottom: 30px;
+  font-size: 1.7rem !important;  /* Scales dynamically with screen size */
+  margin-bottom: 30px !important;
   color: #013861; 
   text-transform: uppercase;
   letter-spacing: -1px; /* Tighter letter spacing looks more premium */
@@ -190,7 +190,7 @@
 
 .hgsi-sub-heading {
   color: #013861; 
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: 1.7rem !important;
   font-weight: 800;
   margin-bottom: 20px;
   text-transform: uppercase;

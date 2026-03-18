@@ -42,8 +42,8 @@ function Hero() {
       onMouseMove={handleMouseMove}
     >
       
-      {/* ✅ Animated Background with Interactive Grid */}
-      <div className="hero-gray-bg">
+      {/* Light Image Background with Interactive Grid */}
+      <div className="hero-image-bg">
         <div className="hero-grid-base"></div>
         <div className="hero-grid-interactive"></div>
       </div>

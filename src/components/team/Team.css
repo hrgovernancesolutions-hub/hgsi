@@ -48,7 +48,7 @@
    ✨ HGSI MASSIVE HEADING & RUBBERBAND
 ======================================================== */
 .hgsi-massive-heading {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: #013861; /* Navy Blue */
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -261,7 +261,7 @@
 }
 
 .ta-info-box h3 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #ffffff;
   font-weight: 900;
   text-transform: uppercase;
