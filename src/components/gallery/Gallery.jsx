@@ -14,15 +14,15 @@ import img8 from "./gimages/img8.jpg";
 import img9 from "./gimages/img9.jpg";
 import img10 from "./gimages/img10.jpg";
 import img11 from "./gimages/img11.jpg";
-import img12 from "./gimages/image12.jpg";
-import img13 from "./gimages/image13.JPG";
-import img14 from "./gimages/image14.jpeg";
-import img15 from "./gimages/image15.jpg";
-import img16 from "./gimages/image16.jpg"; // Mango Mist 2017
-import img17 from "./gimages/image17.jpg"; // Mathew Visit 2022
-import img18 from "./gimages/image18.jpg"; // Mens Day 2024
-import img19 from "./gimages/image19.jpg"; // Valentine Day 2019
-import img20 from "./gimages/image20.jpg"; // Womens Day 2024
+import img12 from "./gimages/img12.jpg";
+import img13 from "./gimages/img13.JPG";
+import img14 from "./gimages/img14.jpeg";
+import img15 from "./gimages/img15.jpg";
+import img16 from "./gimages/img16.jpg"; // Mango Mist 2017
+import img17 from "./gimages/img17.jpg"; // Mathew Visit 2022
+import img18 from "./gimages/img18.JPG"; // Mens Day 2024
+import img19 from "./gimages/img19.jpg"; // Valentine Day 2019
+import img20 from "./gimages/img20.JPG"; // Womens Day 2024
 
 // Map your data to the imported images
 const imageData = [
