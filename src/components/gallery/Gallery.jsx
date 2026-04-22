@@ -35,22 +35,20 @@ const imageData = [
   { id: 7, src: img7, title: "Diwali", year: "2026" },
   { id: 8, src: img8, title: "Outing", year: "2025" },
   { id: 9, src: img9, title: "Independence Day", year: "2023" },
-  { id: 10, src: img10, title: "Global Connect", year: "2025" },
-  { id: 11, src: img11, title: "Global Connect", year: "2025" },
-  { id: 12, src: img12, title: "Snow Day", year: "2025" },
-  { id: 13, src: img13, title: "Christmas Day", year: "2025" },
-  { id: 14, src: img14, title: "Outing", year: "2025" },
-  { id: 15, src: img15, title: "Independence Day Celebrations", year: "2024" },
-  { id: 16, src: img16, title: "Mango Mist", year: "2017" },
-  { id: 17, src: img17, title: "Mathew's Visit", year: "2022" },
-  { id: 18, src: img18, title: "Men's Day", year: "2024" },
-  { id: 19, src: img19, title: "Valentine's Day", year: "2019" },
-  { id: 20, src: img20, title: "Women's Day Celebrations", year: "2024" },
+  { id: 10, src: img10, title: "Mathew Visit", year: "2025" },
+  { id: 11, src: img11, title: "Mathew Visit", year: "2025" },
+  { id: 12, src: img12, title: "Independece Day", year: "2024" },
+  { id: 13, src: img13, title: "Mango Mist", year: "2017" },
+  { id: 14, src: img14, title: "Mathew Visit", year: "2022" },
+  { id: 15, src: img15, title: "Mens Day", year: "2024" },
+  { id: 16, src: img16, title: "Valentine Day", year: "2019" },
+  { id: 17, src: img17, title: "Womens Day", year: "2024" },
+  { id: 18, src: img18, title: "Discovery Village ", year: "2018" },
+  { id: 19, src: img19, title: "Christmas Day", year: "2019" },
+  { id: 20, src: img20, title: "Carrom Tournament", year: "2024" },
 ];
 
-// ==========================================
-// ✨ Isolated Image Card Component
-// ==========================================
+
 const ImageCard = ({ img, index, onClick }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
