@@ -1,57 +1,105 @@
-/* --- ROOT & THEME --- */
+/* =======================================================
+   ROOT & THEME - PREMIUM CORPORATE
+======================================================== */
 .gl-page-root {
-  background-color: #f4f7f9; /* Clean Gray-White */
-  padding: 100px 5% 80px;
-  margin-top: 70px;
+  background-color: #f8fafc; /* Ultra-clean, subtle cool gray */
+  padding: 100px 0 80px;
   overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  width: 100vw;
+  max-width: 100%;
 }
 
 /* =======================================================
-   ✨ LEFT-ALIGNED CATCHY HEADER
+   HEADER - SLEEK & MODERN
 ======================================================== */
 .gl-header-left {
-  max-width: 600px;
-  margin-bottom: 60px;
+  width: 100%;
+  padding: 0 4%; /* Keeps it aligned with the full-width grid */
+  margin-bottom: 50px;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .gl-label {
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  color: #0099ff; /* Electric Blue */
-  margin-bottom: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #0284c7; /* Professional Blue */
+  margin-bottom: 12px;
   text-transform: uppercase;
 }
 
 .gl-title {
-  font-size: clamp(3rem, 8vw, 5rem);
-  line-height: 0.9;
-  color: #013861; /* Navy Blue */
-  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  color: #0f172a; /* Deep Slate */
+  font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 25px;
-  letter-spacing: -2px;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
 .gl-subtitle {
   font-size: 1.1rem;
-  color: #555555;
-  line-height: 1.6;
-  max-width: 450px;
-  border-left: 3px solid #0099ff;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 600px;
+  border-left: 4px solid #0284c7;
   padding-left: 20px;
+  margin-bottom: 35px;
 }
 
 /* =======================================================
-   ✨ KINETIC BENTO GRID (Variable Spans)
+   FILTER TABS - PILL DESIGN
+======================================================== */
+.gl-filter-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gl-filter-btn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 50px; /* Modern pill shape */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.gl-filter-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+.gl-filter-btn.active {
+  background: #0f172a; /* Dark slate active state */
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+  transform: translateY(-2px);
+}
+
+/* =======================================================
+   KINETIC BENTO GRID - FULL WIDTH
 ======================================================== */
 .gl-bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 280px;
-  gap: 30px;
-  max-width: 1400px;
+  grid-auto-rows: 320px;
+  gap: 20px;
+  width: 100%;
+  padding: 0 4%; /* Edge-to-edge with safe margins */
+  box-sizing: border-box;
 }
 
 /* Bento Span Logic */
@@ -66,8 +114,11 @@
   position: relative;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 24px; /* Soft modern corners */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
 .gl-bento-item.gl-reveal {
@@ -80,138 +131,257 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-}
-
-.gl-img-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 3;
-  /* 0 Border Radius for that Brutalist developer feel */
-  border-radius: 0px; 
-  background: #013861;
-  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 24px;
 }
 
 .gl-actual-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease, filter 0.4s ease;
-}
-
-/* --- THE BRUTALIST SHADOW --- */
-.gl-brutal-shadow {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #013861; /* Navy Shadow */
-  z-index: 1;
-  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 24px;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 /* =======================================================
-   ✨ HOVER ANIMATIONS
+   SKELETON SHIMMER EFFECT (LOADING)
 ======================================================== */
-.gl-bento-item:hover .gl-img-wrapper {
-  transform: translate(-10px, -10px); /* Lifts up and left */
+/* Hide image until it's fully loaded */
+.gl-img-hidden {
+  opacity: 0;
 }
 
-.gl-bento-item:hover .gl-brutal-shadow {
-  transform: translate(10px, 10px); /* Shadow stays but feels offset */
-  background: #0099ff; /* Shadow turns Electric Blue on hover */
+/* Smooth fade-in when the image finishes downloading */
+.gl-img-loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* The Animated Pulse Background */
+.gl-shimmer-skeleton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #e2e8f0;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 24px;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* =======================================================
+   HOVER ANIMATIONS - NO GRAYSCALE
+======================================================== */
+.gl-bento-item:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .gl-bento-item:hover .gl-actual-img {
-  transform: scale(1.1);
-  filter: grayscale(100%) brightness(0.7); /* Cool developer aesthetic */
+  transform: scale(1.08); /* Smooth zoom, vibrant colors kept */
 }
 
 /* Meta Data on Hover */
 .gl-hover-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.2) 50%, rgba(15, 23, 42, 0) 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end; /* Align text to bottom */
+  align-items: flex-start;
+  padding: 30px;
   z-index: 4;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
+  border-radius: 24px;
 }
 
 .gl-bento-item:hover .gl-hover-overlay {
   opacity: 1;
 }
 
-.gl-icon { color: #0099ff; margin-bottom: 10px; }
-.gl-meta { color: #ffffff; font-weight: 800; letter-spacing: 2px; font-size: 0.8rem; }
+.gl-icon { 
+  color: #ffffff; 
+  margin-bottom: 10px; 
+  opacity: 0.8;
+}
+
+.gl-meta-title { 
+  display: block;
+  color: #ffffff; 
+  font-weight: 700; 
+  letter-spacing: 1px; 
+  font-size: 1.1rem; 
+  text-transform: uppercase;
+}
+
+.gl-meta-year {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
 
 /* =======================================================
-   ✨ POPUP (ULTRA CLEAN)
+   POPUP - CINEMATIC & PREMIUM
 ======================================================== */
 .gl-popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(1, 56, 97, 0.98);
-  backdrop-filter: blur(20px);
+  background: rgba(15, 23, 42, 0.95); /* Deep sleek slate */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 3000;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: zoom-out;
+  padding: 20px;
 }
 
 .gl-popup-content {
   position: relative;
-  max-width: 90%;
-  max-height: 85vh;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: gl-zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .gl-enlarged-img {
   max-width: 100%;
-  max-height: 85vh;
+  max-height: 75vh;
   display: block;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* --- DYNAMIC TITLE BOX IN POPUP (Floating Pill) --- */
+.gl-popup-caption {
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-align: center;
+  z-index: 3010;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.gl-popup-caption h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.gl-popup-caption span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  color: #e0f2fe;
+  padding-left: 15px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .gl-close-btn {
   position: absolute;
-  top: 30px; right: 30px;
-  color: white; background: none; border: none;
+  top: 30px; 
+  right: 40px;
+  color: white; 
+  background: rgba(255, 255, 255, 0.1); 
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
-.gl-close-btn:hover { transform: rotate(90deg); color: #0099ff; }
+.gl-close-btn:hover { 
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1); 
+}
 
 .gl-nav-btn {
   position: absolute;
-  color: white; background: none; border: none;
+  color: white; 
+  background: rgba(255, 255, 255, 0.05); 
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  opacity: 0.4;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
-.gl-nav-btn:hover { opacity: 1; color: #0099ff; }
-.gl-left { left: 40px; }
-.gl-right { right: 40px; }
+.gl-nav-btn:hover { 
+  background: rgba(255, 255, 255, 0.15); 
+  transform: scale(1.1);
+}
 
-@keyframes gl-zoomIn { from { opacity: 0; transform: scale(0.9); } }
+.gl-left { left: 4%; }
+.gl-right { right: 4%; }
+
+@keyframes gl-zoomIn { 
+  from { opacity: 0; transform: scale(0.95) translateY(10px); } 
+}
 
 /* =======================================================
-   ✨ RESPONSIVE
+   RESPONSIVE DESIGN
 ======================================================== */
 @media (max-width: 1024px) {
   .gl-bento-grid { grid-template-columns: repeat(2, 1fr); }
   .gl-span-1, .gl-span-2, .gl-span-4 { grid-column: span 1; grid-row: span 1; }
+  .gl-left { left: 2%; }
+  .gl-right { right: 2%; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .gl-bento-grid { grid-template-columns: 1fr; grid-auto-rows: 350px; }
-  .gl-title { font-size: 3.5rem; }
-  .gl-nav-btn { display: none; } /* Hide arrows on mobile for simplicity */
+  .gl-title { font-size: 2.8rem; }
+  .gl-nav-btn { display: none; } /* Hide arrows on small mobile */
+  
+  .gl-popup-caption {
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px 25px;
+    border-radius: 20px;
+  }
+  
+  .gl-popup-caption span {
+    border-left: none;
+    padding-left: 0;
+  }
 }
