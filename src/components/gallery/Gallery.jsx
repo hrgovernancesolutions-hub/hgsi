@@ -31,8 +31,8 @@ const imageData = [
   { id: 3, src: img3, title: "Independence Day", year: "2022" },
   { id: 4, src: img4, title: "Ethnic Day", year: "2022" },
   { id: 5, src: img5, title: "Global Connect", year: "2025" },
-  { id: 6, src: img6, title: "Diwali", year: "2026" },
-  { id: 7, src: img7, title: "Diwali", year: "2026" },
+  { id: 6, src: img6, title: "Ganesh festival", year: "2026" },
+  { id: 7, src: img7, title: "Deepavali", year: "2026" },
   { id: 8, src: img8, title: "Outing", year: "2025" },
   { id: 9, src: img9, title: "Independence Day", year: "2023" },
   { id: 10, src: img10, title: "Mathew Visit", year: "2025" },
@@ -45,7 +45,7 @@ const imageData = [
   { id: 17, src: img17, title: "Womens Day", year: "2024" },
   { id: 18, src: img18, title: "Discovery Village ", year: "2018" },
   { id: 19, src: img19, title: "Christmas Day", year: "2019" },
-  { id: 20, src: img20, title: "Carrom Tournament", year: "2024" },
+  { id: 20, src: img20, title: "Carrom Tournament", year: "2016" },
 ];
 
 
